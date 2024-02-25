@@ -1,10 +1,8 @@
-import { ImageResponse } from '@vercel/og';
-// App router includes @vercel/og.
-// No need to install it.
-
 export const runtime = 'edge';
 
 export async function GET() {
+  const { ImageResponse } = await import('@vercel/og');
+
   return new ImageResponse(
     (
       <div
