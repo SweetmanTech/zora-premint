@@ -42,6 +42,8 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
+  console.log('SWEETS VERCEL_URL', VERCEL_URL);
+
   return (
     <>
       <h1>zizzamia.xyz</h1>
