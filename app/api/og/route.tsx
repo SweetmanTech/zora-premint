@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 export const runtime = 'edge';
 
 export async function GET() {
