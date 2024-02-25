@@ -1,6 +1,6 @@
 import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
 import { NextRequest, NextResponse } from 'next/server';
-import { NEXT_PUBLIC_URL } from '../../config';
+import { NEXT_PUBLIC_URL, VERCEL_URL } from '../../config';
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   console.log("SWEETS REQUEST RECEIVED ")
@@ -52,7 +52,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     image: {
       src: `${NEXT_PUBLIC_URL}/park-1.png`,
     },
-    postUrl: `http://localhost:3000/api/frame`,
+    postUrl: `${VERCEL_URL}/api/frame`,
   } as any
 
   return new NextResponse(

@@ -1,7 +1,8 @@
 import { getFrameMetadata } from '@coinbase/onchainkit/frame';
 import type { Metadata } from 'next';
-import { NEXT_PUBLIC_URL } from './config';
+import { NEXT_PUBLIC_URL, VERCEL_URL } from './config';
 
+console.log('SWEETS VERCEL_URL', VERCEL_URL);
 const frameMetadata = getFrameMetadata({
   buttons: [
     {
@@ -24,7 +25,7 @@ const frameMetadata = getFrameMetadata({
   input: {
     text: 'Tell me a boat story',
   },
-  postUrl: `http://localhost:3000/api/frame`,
+  postUrl: `${VERCEL_URL}/api/frame`,
 });
 
 export const metadata: Metadata = {
