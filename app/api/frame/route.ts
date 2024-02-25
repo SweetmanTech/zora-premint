@@ -9,6 +9,8 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   let text: string | undefined = '';
 
   const body: FrameRequest = await req.json();
+  console.log("SWEETS body ", body)
+
   const {untrustedData} = body
   const {buttonIndex} = untrustedData
   console.log("SWEETS untrustedData ", untrustedData)
