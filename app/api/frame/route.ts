@@ -36,7 +36,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     input: {
       text: 'Tell me a boat story',
     },
-    postUrl: `http://localhost:3000/api/frame`,
+    postUrl: `${VERCEL_URL}/api/frame`,
   } as any
 
   const second = {
