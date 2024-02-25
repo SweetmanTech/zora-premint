@@ -5,16 +5,20 @@ import { NEXT_PUBLIC_URL, VERCEL_URL } from '../../config';
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   console.log("SWEETS REQUEST RECEIVED", req)
 
-  let accountAddress: string | undefined = '';
   let text: string | undefined = '';
 
-  const body: FrameRequest = await req.json();
-  console.log("SWEETS body ", body)
+  let buttonIndex;
+  try {
+    const body: FrameRequest = await req.json();
+    console.log("SWEETS body ", body)
 
-  const {untrustedData} = body
-  const {buttonIndex} = untrustedData
-  console.log("SWEETS untrustedData ", untrustedData)
-  console.log("SWEETS buttonIndex ", buttonIndex)
+    const {untrustedData} = body
+    buttonIndex = untrustedData.buttonIndex
+    console.log("SWEETS untrustedData ", untrustedData)
+    console.log("SWEETS buttonIndex ", buttonIndex)
+  } catch (error) {
+    console.error("Error parsing JSON from request", error);
+  }
 
   const start = {
     buttons: [
