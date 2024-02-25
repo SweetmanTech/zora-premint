@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { NEXT_PUBLIC_URL, VERCEL_URL } from '../../config';
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
-  console.log("SWEETS REQUEST RECEIVED ")
+  console.log("SWEETS REQUEST RECEIVED", req)
 
   let accountAddress: string | undefined = '';
   let text: string | undefined = '';
