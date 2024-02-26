@@ -1,7 +1,7 @@
 import { getFrameMetadata } from '@coinbase/onchainkit/frame';
 import type { Metadata } from 'next';
 import { VERCEL_URL } from './config';
-import LoginButton from './components/LoginButton';
+import LandingPage from '../components/LandingPage';
 
 const frameMetadata = getFrameMetadata({
   buttons: [
@@ -36,8 +36,7 @@ export const metadata: Metadata = {
 
 const Page = () => (
   <>
-    <h1>DATA MUSE</h1>
-    <LoginButton />
+    <LandingPage />
   </>
 );
 
