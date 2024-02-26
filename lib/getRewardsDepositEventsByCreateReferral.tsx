@@ -66,6 +66,7 @@ export const getRewardsDepositEventsByCreator = async (creator: string | number 
         firstMinterReward: decodedData[6].toString(),
         zoraReward: decodedData[7].toString(),
         chainId: log.chainId,
+        buyer: log.buyer,
       };
     } catch (error) {
       // eslint-disable-next-line no-console
