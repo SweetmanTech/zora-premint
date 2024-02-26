@@ -34,12 +34,10 @@ export const metadata: Metadata = {
   },
 };
 
-const Page = () => {
-  return (
-    <>
-      <LandingPage />
-    </>
-  );
-};
+const Page = () => (
+  <>
+    <LandingPage />
+  </>
+);
 
 export default Page;
