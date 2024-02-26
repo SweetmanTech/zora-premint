@@ -3,21 +3,16 @@ import { NextRequest, NextResponse } from 'next/server';
 import { NEXT_PUBLIC_URL, VERCEL_URL } from '../../config';
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
-  console.log("SWEETS REQUEST RECEIVED", req)
-
   let text: string | undefined = '';
 
   let buttonIndex = 1;
   try {
     const body: FrameRequest = await req.json();
-    console.log("SWEETS body ", body)
 
-    const {untrustedData} = body
-    buttonIndex = untrustedData.buttonIndex
-    console.log("SWEETS untrustedData ", untrustedData)
-    console.log("SWEETS buttonIndex ", buttonIndex)
+    const { untrustedData } = body;
+    buttonIndex = untrustedData.buttonIndex;
   } catch (error) {
-    console.error("Error parsing JSON from request", error);
+    console.error('Error parsing JSON from request', error);
   }
 
   const buttons = [
@@ -30,20 +25,18 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     {
       label: '30 day',
     },
-  ]
+  ];
 
-  const days = [7,14,30]
+  const days = [7, 14, 30];
   const frame = {
     buttons,
     image: {
       src: `${VERCEL_URL}/api/og?days=${days[buttonIndex - 1]}`,
     },
     postUrl: `${VERCEL_URL}/api/frame`,
-  } as any
+  } as any;
 
-  return new NextResponse(
-    getFrameHtmlResponse(frame),
-  );
+  return new NextResponse(getFrameHtmlResponse(frame));
 }
 
 export async function POST(req: NextRequest): Promise<Response> {

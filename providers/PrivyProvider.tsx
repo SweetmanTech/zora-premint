@@ -7,7 +7,7 @@ const PrivyProvider = ({ children }: { children: React.ReactNode }) => {
     <Provider
       appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID as string}
       config={{
-        loginMethods: ['email'],
+        loginMethods: ['wallet'],
         appearance: {
           theme: 'light',
           accentColor: '#676FFF',
