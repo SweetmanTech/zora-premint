@@ -2,14 +2,14 @@ const getLeaderboard = (results: any) => {
   const summary = {} as any;
 
   results.forEach((result: any) => {
-    const fromAddress = result.from;
+    const buyerAddress = result.buyer;
     const reward = BigInt(result.creatorReward);
 
-    if (summary[fromAddress]) {
-      summary[fromAddress].totalCreatorReward += reward;
+    if (summary[buyerAddress]) {
+      summary[buyerAddress].totalCreatorReward += reward;
     } else {
-      summary[fromAddress] = {
-        from: fromAddress,
+      summary[buyerAddress] = {
+        buyer: buyerAddress,
         totalCreatorReward: reward,
       };
     }
@@ -17,7 +17,7 @@ const getLeaderboard = (results: any) => {
 
   return Object.values(summary)
     .map((item: any) => ({
-      from: item.from,
+      buyer: item.buyer,
       totalCreatorReward: item.totalCreatorReward.toString(),
     }))
     .sort((a: any, b: any) => {

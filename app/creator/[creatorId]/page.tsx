@@ -1,7 +1,7 @@
 import { getFrameMetadata } from '@coinbase/onchainkit/frame';
 import type { Metadata } from 'next';
-import LandingPage from '@/components/LandingPage';
 import { VERCEL_URL } from '@/lib/consts';
+import LeaderboardPage from '@/components/LeaderboardPage/LeaderboardPage';
 
 const frameMetadata = getFrameMetadata({
   buttons: [
@@ -34,10 +34,13 @@ export const metadata: Metadata = {
   },
 };
 
-const Page = () => (
-  <>
-    <LandingPage />
-  </>
-);
+const Page = ({ params }: { params: { creatorId: string } }) => {
+  console.log('SWEETS SLUG', params.creatorId);
+  return (
+    <>
+      <LeaderboardPage creator={params.creatorId} />
+    </>
+  );
+};
 
 export default Page;
