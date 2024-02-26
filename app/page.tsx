@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import { VERCEL_URL } from './config';
 import LoginButton from './components/LoginButton';
 
-console.log('SWEETS VERCEL_URL', VERCEL_URL);
 const frameMetadata = getFrameMetadata({
   buttons: [
     {
@@ -23,11 +22,11 @@ const frameMetadata = getFrameMetadata({
 });
 
 export const metadata: Metadata = {
-  title: 'zizzamia.xyz',
-  description: 'LFG',
+  title: 'datamuse.xyz',
+  description: 'data muse',
   openGraph: {
-    title: 'zizzamia.xyz',
-    description: 'LFG',
+    title: 'data muse',
+    description: 'data muse',
     images: [`https://my-first-frame-xi.vercel.app/api/og`],
   },
   other: {
@@ -35,13 +34,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
-  console.log('SWEETS VERCEL_URL', VERCEL_URL);
+const Page = () => (
+  <>
+    <h1>DATA MUSE</h1>
+    <LoginButton />
+  </>
+);
 
-  return (
-    <>
-      <h1>DATA MUSE</h1>
-      <LoginButton />
-    </>
-  );
-}
+export default Page;
