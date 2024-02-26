@@ -16,28 +16,37 @@ export const getRewardsDepositEventsByCreator = async (creator: string | number 
   const rpcUrls = [
     {
       chain: 'optimism',
+      chainId: 10,
       rpc: 'https://optimism.rpc.hypersync.xyz',
     },
     {
       chain: 'zora',
+      chainId: 7777777,
       rpc: 'https://zora.rpc.hypersync.xyz',
     },
     {
       chain: 'ethereum',
+      chainId: 1,
       rpc: 'https://eth.rpc.hypersync.xyz',
     },
     {
       chain: 'base',
+      chainId: 8453,
       rpc: 'https://base.rpc.hypersync.xyz',
     },
   ];
   const requests = rpcUrls.map((rpcUrl) => {
-    return getLogs(PROTOCOL_REWARDS_ADDRESS, topics, latestBlock, fromBlock, rpcUrl.rpc);
+    return getLogs(
+      PROTOCOL_REWARDS_ADDRESS,
+      topics,
+      latestBlock,
+      fromBlock,
+      rpcUrl.rpc,
+      rpcUrl.chainId,
+    );
   });
   const responses = await Promise.all(requests);
-
-  const results = responses.filter((response) => response.result);
-  const batchedLogs = results.map((response) => response.result).flat();
+  const batchedLogs = responses.flat(2);
   const parsedLogs = batchedLogs.map((log: any, index) => {
     try {
       const decodedData = decodeAbiParameters(
@@ -56,6 +65,7 @@ export const getRewardsDepositEventsByCreator = async (creator: string | number 
         mintReferralReward: decodedData[5].toString(),
         firstMinterReward: decodedData[6].toString(),
         zoraReward: decodedData[7].toString(),
+        chainId: log.chainId,
       };
     } catch (error) {
       // eslint-disable-next-line no-console
