@@ -2,6 +2,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getRewardsDepositEventsByCreator } from '../../../lib/getRewardsDepositEventsByCreateReferral';
 async function getRewardsByCreator(req: NextRequest): Promise<NextResponse> {
   const creator = req.nextUrl.searchParams.get('creator');
+  if (!creator) {
+    return new NextResponse('Missing Creator', {
+      status: 422,
+    });
+  }
   const response = await getRewardsDepositEventsByCreator(creator);
   const res = {
     recordsCount: response.length,

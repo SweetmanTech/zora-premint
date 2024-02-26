@@ -4,6 +4,7 @@ export const getLogs = async (
   latestBlock: number | string | bigint,
   fromBlock: number | string | bigint,
   endpoint: string | any,
+  chainId: number | string | bigint,
 ) => {
   try {
     const response = await fetch(endpoint, {
@@ -26,7 +27,13 @@ export const getLogs = async (
       }),
     });
     const data = await response.json();
-    return data;
+    const dataWithChainId = data.result.map((log: any) => {
+      return {
+        ...log,
+        chainId,
+      };
+    });
+    return dataWithChainId;
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error('Error fetching logs:', err);
