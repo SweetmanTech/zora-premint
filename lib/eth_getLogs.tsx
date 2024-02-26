@@ -27,7 +27,7 @@ export const getLogs = async (
       }),
     });
     const data = await response.json();
-    const dataWithChainId = data.result.map((log) => {
+    const dataWithChainId = data.result.map((log: any) => {
       return {
         ...log,
         chainId,
