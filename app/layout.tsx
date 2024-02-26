@@ -1,3 +1,6 @@
+import Providers from '../providers/Providers';
+import '../styles/globals.css';
+
 export const viewport = {
   width: 'device-width',
   initialScale: 1.0,
@@ -6,7 +9,9 @@ export const viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
