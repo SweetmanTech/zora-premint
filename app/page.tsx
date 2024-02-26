@@ -1,6 +1,7 @@
 import { getFrameMetadata } from '@coinbase/onchainkit/frame';
 import type { Metadata } from 'next';
 import { VERCEL_URL } from './config';
+import LoginButton from './components/LoginButton';
 
 console.log('SWEETS VERCEL_URL', VERCEL_URL);
 const frameMetadata = getFrameMetadata({
@@ -40,6 +41,7 @@ export default function Page() {
   return (
     <>
       <h1>DATA MUSE</h1>
+      <LoginButton />
     </>
   );
 }
