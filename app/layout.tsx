@@ -1,4 +1,4 @@
-import Providers from './Providers';
+import Providers from './components/Providers';
 
 export const viewport = {
   width: 'device-width',

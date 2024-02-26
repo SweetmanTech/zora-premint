@@ -1,10 +1,10 @@
 'use client';
 
-import { PrivyProvider } from '@privy-io/react-auth';
+import { PrivyProvider as Provider } from '@privy-io/react-auth';
 
-const Providers = ({ children }: { children: React.ReactNode }) => {
+const PrivyProvider = ({ children }: { children: React.ReactNode }) => {
   return (
-    <PrivyProvider
+    <Provider
       appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID as string}
       config={{
         loginMethods: ['email'],
@@ -18,8 +18,8 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
       }}
     >
       {children}
-    </PrivyProvider>
+    </Provider>
   );
 };
 
-export default Providers;
+export default PrivyProvider;
