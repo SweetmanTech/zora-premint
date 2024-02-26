@@ -1,7 +1,6 @@
 import { CardContent, Card } from '@/components/Card/Card';
-import Button from '../Button';
 import LogoutButton from '../LogoutButton';
-import Avatar from '../Avatar';
+import LeaderboardRow from './Leaderboardrow';
 
 const LeaderboardPage = () => (
   <Card className="w-full max-w-4xl">
@@ -23,46 +22,11 @@ const LeaderboardPage = () => (
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200 dark:divide-gray-800">
-            <tr className="bg-gray-50 dark:bg-gray-950">
-              <td className="px-4 py-4 text-sm font-medium text-gray-900">#1</td>
-              <td className="px-4 py-4 flex items-center gap-3">
-                <Avatar />
-                Jane Cooper
-              </td>
-              <td className="px-4 py-4 text-sm text-gray-500">33 editions</td>
-            </tr>
-            <tr className="dark:bg-gray-900">
-              <td className="px-4 py-4 text-sm font-medium text-gray-900">#2</td>
-              <td className="px-4 py-4 flex items-center gap-3">
-                <Avatar />
-                Cody Fisher
-              </td>
-              <td className="px-4 py-4 text-sm text-gray-500">22 editions</td>
-            </tr>
-            <tr className="bg-gray-50 dark:bg-gray-950">
-              <td className="px-4 py-4 text-sm font-medium text-gray-900">#3</td>
-              <td className="px-4 py-4 flex items-center gap-3">
-                <Avatar />
-                Gordon Meyer
-              </td>
-              <td className="px-4 py-4 text-sm text-gray-500">15 editions</td>
-            </tr>
-            <tr className="dark:bg-gray-900">
-              <td className="px-4 py-4 text-sm font-medium text-gray-900">#4</td>
-              <td className="px-4 py-4 flex items-center gap-3">
-                <Avatar />
-                Jordan
-              </td>
-              <td className="px-4 py-4 text-sm text-gray-500">12 editions</td>
-            </tr>
-            <tr className="bg-gray-50 dark:bg-gray-950">
-              <td className="px-4 py-4 text-sm font-medium text-gray-900">#5</td>
-              <td className="px-4 py-4 flex items-center gap-3">
-                <Avatar />
-                Josh
-              </td>
-              <td className="px-4 py-4 text-sm text-gray-500">10 editions</td>
-            </tr>
+            <LeaderboardRow rank={1} name="Jane Cooper" text="33 editions" />
+            <LeaderboardRow rank={2} name="Cody Fisher" text="22 editions" />
+            <LeaderboardRow rank={3} name="Gordon Meyer" text="15 editions" />
+            <LeaderboardRow rank={4} name="Jordan" text="12 editions" />
+            <LeaderboardRow rank={5} name="Josh" text="10 editions" />
           </tbody>
         </table>
       </div>
