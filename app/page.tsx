@@ -1,29 +1,22 @@
 import { getFrameMetadata } from '@coinbase/onchainkit/frame';
 import type { Metadata } from 'next';
-import { NEXT_PUBLIC_URL, VERCEL_URL } from './config';
+import { VERCEL_URL } from './config';
 
 console.log('SWEETS VERCEL_URL', VERCEL_URL);
 const frameMetadata = getFrameMetadata({
   buttons: [
     {
-      label: 'Story time!',
+      label: '7 day',
     },
     {
-      action: 'link',
-      label: 'Link to Google',
-      target: 'https://www.google.com',
+      label: '14 day',
     },
     {
-      label: 'Redirect to pictures',
-      action: 'post_redirect',
+      label: '30 day',
     },
   ],
   image: {
-    src: `${NEXT_PUBLIC_URL}/park-3.png`,
-    aspectRatio: '1:1',
-  },
-  input: {
-    text: 'Tell me a boat story',
+    src: `https://my-first-frame-xi.vercel.app/api/og`,
   },
   postUrl: `${VERCEL_URL}/api/frame`,
 });
@@ -34,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'zizzamia.xyz',
     description: 'LFG',
-    images: [`${NEXT_PUBLIC_URL}/park-1.png`],
+    images: [`https://my-first-frame-xi.vercel.app/api/og`],
   },
   other: {
     ...frameMetadata,

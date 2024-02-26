@@ -7,7 +7,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
 
   let text: string | undefined = '';
 
-  let buttonIndex;
+  let buttonIndex = 1;
   try {
     const body: FrameRequest = await req.json();
     console.log("SWEETS body ", body)
@@ -20,49 +20,29 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     console.error("Error parsing JSON from request", error);
   }
 
-  const start = {
-    buttons: [
-      {
-        label: 'Story time!',
-      },
-      {
-        action: 'link',
-        label: 'Link to Google',
-        target: 'https://www.google.com',
-      },
-      {
-        label: 'Redirect to pictures',
-        action: 'post_redirect',
-      },
-    ],
-    image: {
-      src: `${NEXT_PUBLIC_URL}/park-3.png`,
-      aspectRatio: '1:1',
+  const buttons = [
+    {
+      label: '7 day',
     },
-    input: {
-      text: 'Tell me a boat story',
+    {
+      label: '14 day',
     },
-    postUrl: `${VERCEL_URL}/api/frame`,
-  } as any
+    {
+      label: '30 day',
+    },
+  ]
 
-  const second = {
-    buttons: [
-      
-      {
-        label: `Story: ${text} 🌲🌲`,
-      },
-      {
-        label: `Start Over 🌲🌲`,
-      },
-    ],
+  const days = [7,14,30]
+  const frame = {
+    buttons,
     image: {
-      src: `${NEXT_PUBLIC_URL}/park-1.png`,
+      src: `${VERCEL_URL}/api/og?days=${days[buttonIndex - 1]}`,
     },
     postUrl: `${VERCEL_URL}/api/frame`,
   } as any
 
   return new NextResponse(
-    getFrameHtmlResponse(buttonIndex === 1 ? second : start ),
+    getFrameHtmlResponse(frame),
   );
 }
 

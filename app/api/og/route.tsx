@@ -1,21 +1,28 @@
+import { NextRequest } from 'next/server';
+
 export const runtime = 'edge';
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const queryParams = req.nextUrl.searchParams;
+  const days = queryParams.get('days') || 30;
+
+  console.log('SWEETS body', days);
+
   const { ImageResponse } = await import('@vercel/og');
 
   // Use the Fetch API instead of Axios
-  const response = await fetch('https://cached.quickindexer.xyz/leaderboard?days=30');
-  const data = await response.json(); // Assuming the response is JSON
+  const response = await fetch(`https://cached.quickindexer.xyz/leaderboard?days=${days}`);
+  const data = await response.json();
   console.log('SWEETS response', data.recordsCount);
 
   return new ImageResponse(
     (
       <div
         style={{
-          display: 'flex', // Set display to flex
-          flexDirection: 'row', // Ensure content is aligned vertically
-          justifyContent: 'center', // Center content vertically
-          alignItems: 'center', // Center content horizontally
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
           fontSize: 40,
           color: 'black',
           background: 'white',
