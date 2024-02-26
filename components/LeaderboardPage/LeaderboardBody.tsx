@@ -10,10 +10,7 @@ const LeaderboardBody = ({ creator }: any) => {
     const init = async () => {
       const response = await fetch(`/api/getRewardsByCreator?creator=${creator}`);
       const data = await response.json();
-      console.log('SWEETS data', data);
       const filtered = getLeaderboard(data.response);
-      console.log('SWEETS filtered', filtered);
-
       setResults(filtered);
     };
 
