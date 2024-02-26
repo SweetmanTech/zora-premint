@@ -5,7 +5,7 @@ import LoginButton from '../LoginButton';
 import LeaderboardPage from '../LeaderboardPage/LeaderboardPage';
 
 const LandingPage = () => {
-  const { ready, authenticated, user } = usePrivy();
+  const { ready, authenticated } = usePrivy();
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-12 bg-gray-1000 sm:py-24 lg:py-36 dark:bg-gray-100">

@@ -1,8 +1,11 @@
 import { CardContent, Card } from '@/components/Card/Card';
+import Button from '../Button';
+import LogoutButton from '../LogoutButton';
 
 const LeaderboardPage = () => (
   <Card className="w-full max-w-4xl">
     <CardContent className="p-0">
+      <LogoutButton />
       <div className="overflow-auto">
         <table className="min-w-full w-full">
           <thead>
