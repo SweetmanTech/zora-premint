@@ -39,7 +39,7 @@ export default function Page() {
 
   return (
     <>
-      <h1>zizzamia.xyz</h1>
+      <h1>DATA MUSE</h1>
     </>
   );
 }
