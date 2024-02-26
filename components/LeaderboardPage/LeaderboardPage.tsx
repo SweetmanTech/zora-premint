@@ -24,46 +24,44 @@ const LeaderboardPage = () => (
           </thead>
           <tbody className="divide-y divide-gray-200 dark:divide-gray-800">
             <tr className="bg-gray-50 dark:bg-gray-950">
-              <td className="px-4 py-4 text-sm font-medium text-gray-900">1</td>
+              <td className="px-4 py-4 text-sm font-medium text-gray-900">#1</td>
               <td className="px-4 py-4 flex items-center gap-3">
                 <Avatar />
                 Jane Cooper
               </td>
-              <td className="px-4 py-4 text-sm text-gray-500">Regional Paradigm Technician</td>
+              <td className="px-4 py-4 text-sm text-gray-500">33 editions</td>
             </tr>
             <tr className="dark:bg-gray-900">
-              <td className="px-4 py-4 text-sm font-medium text-gray-900">2</td>
+              <td className="px-4 py-4 text-sm font-medium text-gray-900">#2</td>
               <td className="px-4 py-4 flex items-center gap-3">
                 <Avatar />
                 Cody Fisher
               </td>
-              <td className="px-4 py-4 text-sm text-gray-500">Product Directives Officer</td>
+              <td className="px-4 py-4 text-sm text-gray-500">22 editions</td>
             </tr>
             <tr className="bg-gray-50 dark:bg-gray-950">
-              <td className="px-4 py-4 text-sm font-medium text-gray-900">3</td>
+              <td className="px-4 py-4 text-sm font-medium text-gray-900">#3</td>
               <td className="px-4 py-4 flex items-center gap-3">
                 <Avatar />
                 Gordon Meyer
               </td>
-              <td className="px-4 py-4 text-sm text-gray-500">Principal Identity</td>
+              <td className="px-4 py-4 text-sm text-gray-500">15 editions</td>
             </tr>
             <tr className="dark:bg-gray-900">
-              <td className="px-4 py-4 text-sm font-medium text-gray-900">4</td>
+              <td className="px-4 py-4 text-sm font-medium text-gray-900">#4</td>
               <td className="px-4 py-4 flex items-center gap-3">
                 <Avatar />
                 Jordan
               </td>
-              <td className="px-4 py-4 text-sm text-gray-500">Dynamic Orchestrator</td>
-              <td className="px-4 py-4 text-sm text-gray-500">Synergies</td>
+              <td className="px-4 py-4 text-sm text-gray-500">12 editions</td>
             </tr>
             <tr className="bg-gray-50 dark:bg-gray-950">
-              <td className="px-4 py-4 text-sm font-medium text-gray-900">5</td>
+              <td className="px-4 py-4 text-sm font-medium text-gray-900">#5</td>
               <td className="px-4 py-4 flex items-center gap-3">
                 <Avatar />
                 Josh
               </td>
-              <td className="px-4 py-4 text-sm text-gray-500">Lead Integration</td>
-              <td className="px-4 py-4 text-sm text-gray-500">Applications</td>
+              <td className="px-4 py-4 text-sm text-gray-500">10 editions</td>
             </tr>
           </tbody>
         </table>
