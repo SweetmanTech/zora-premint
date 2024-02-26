@@ -1,5 +1,4 @@
-import { zora } from 'viem/chains';
-import { Hex, keccak256, toHex } from 'viem';
+import { keccak256, toHex } from 'viem';
 import { decodeAbiParameters, parseAbiParameters } from 'viem';
 import getCleanedEthereumAddress from './getCleanedEthereumAddress';
 import { getLogs } from './eth_getLogs';

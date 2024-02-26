@@ -4,7 +4,7 @@ async function getRewardsByCreator(req: NextRequest): Promise<NextResponse> {
   const creator = req.nextUrl.searchParams.get('creator');
   const response = await getRewardsDepositEventsByCreator(creator);
   const res = {
-    records: response.length,
+    recordsCount: response.length,
     response,
   };
   return new NextResponse(JSON.stringify(res), {
