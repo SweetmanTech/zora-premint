@@ -1,6 +1,6 @@
 import { CardContent, Card } from '@/components/Card/Card';
 import LogoutButton from '../LogoutButton';
-import LeaderboardRow from './Leaderboardrow';
+import LeaderboardRow from './LeaderboardRow';
 
 const LeaderboardPage = () => (
   <Card className="w-full max-w-4xl">
