@@ -2,6 +2,8 @@ import { getFrameMetadata } from '@coinbase/onchainkit/frame';
 import type { Metadata } from 'next';
 import { DEFAULT_FRAME, VERCEL_URL } from '@/lib/consts';
 import LeaderboardPage from '@/components/LeaderboardPage/LeaderboardPage';
+import { FrameMetadata } from '@coinbase/onchainkit';
+import getButtons from '@/lib/getButtons';
 
 const frameMetadata = getFrameMetadata(DEFAULT_FRAME);
 
@@ -11,15 +13,21 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'data muse',
     description: 'data muse',
-    images: [`https://my-first-frame-xi.vercel.app/api/og`],
-  },
-  other: {
-    ...frameMetadata,
   },
 };
 
 const Page = ({ params }: { params: { creatorId: string } }) => (
   <>
+    <FrameMetadata
+      buttons={getButtons()}
+      image={{
+        src: `${VERCEL_URL}/api/leaderboard?creator=${params.creatorId}`,
+      }}
+      input={{
+        text: 'Search a different creator',
+      }}
+      postUrl={`${VERCEL_URL}/api/frame`}
+    />
     <LeaderboardPage creator={params.creatorId} />
   </>
 );

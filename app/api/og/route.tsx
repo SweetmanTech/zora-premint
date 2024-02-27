@@ -5,16 +5,10 @@ export const runtime = 'edge';
 export async function GET(req: NextRequest) {
   const queryParams = req.nextUrl.searchParams;
   const days = queryParams.get('days') || 30;
-
-  console.log('SWEETS body', days);
-
-  const { ImageResponse } = await import('@vercel/og');
-
-  // Use the Fetch API instead of Axios
   const response = await fetch(`https://cached.quickindexer.xyz/leaderboard?days=${days}`);
   const data = await response.json();
-  console.log('SWEETS response', data.recordsCount);
 
+  const { ImageResponse } = await import('@vercel/og');
   return new ImageResponse(
     (
       <div
