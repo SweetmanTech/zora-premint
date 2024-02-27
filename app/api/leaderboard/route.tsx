@@ -7,9 +7,6 @@ export const runtime = 'edge';
 export async function GET(req: NextRequest) {
   const queryParams = req.nextUrl.searchParams;
   const creator = queryParams.get('creator');
-
-  console.log('SWEETS body', creator);
-
   const response = await fetch(
     `https://datamuse.vercel.app/api/getRewardsByCreator?creator=${creator}`,
   );
@@ -17,6 +14,5 @@ export async function GET(req: NextRequest) {
   const filtered = getLeaderboard(data.response);
 
   const { ImageResponse } = await import('@vercel/og');
-
   return new ImageResponse(<Leaderboard leaderboard={filtered.slice(0, 5)} />);
 }
