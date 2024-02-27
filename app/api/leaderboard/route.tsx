@@ -7,16 +7,10 @@ import { NextRequest } from 'next/server';
 export const runtime = 'edge';
 
 export async function GET(req: NextRequest) {
-  console.time('Get Query Params');
   const queryParams = req.nextUrl.searchParams;
   const creator = queryParams.get('creator');
-  console.timeEnd('Get Query Params');
-  console.time('getIndexedData');
   const dataSet = await getAllIndexedData(creator);
-  console.timeEnd('getIndexedData');
-  console.time('getLeaderboard');
   const filtered = getLeaderboard(dataSet.response);
-  console.timeEnd('getLeaderboard');
 
   const { ImageResponse } = await import('@vercel/og');
   return new ImageResponse(<Leaderboard leaderboard={filtered.slice(0, 5)} />);
