@@ -1,6 +1,6 @@
-import { FrameRequest, getFrameMessage, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
+import { VERCEL_URL } from '@/lib/consts';
+import { FrameRequest, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
 import { NextRequest, NextResponse } from 'next/server';
-import { NEXT_PUBLIC_URL, VERCEL_URL } from '../../config';
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   let text: string | undefined = '';

@@ -1,7 +1,7 @@
 import { getFrameMetadata } from '@coinbase/onchainkit/frame';
 import type { Metadata } from 'next';
-import LandingPage from '@/components/LandingPage';
-import { DEFAULT_FRAME } from '@/lib/consts';
+import { DEFAULT_FRAME, VERCEL_URL } from '@/lib/consts';
+import LeaderboardPage from '@/components/LeaderboardPage/LeaderboardPage';
 
 const frameMetadata = getFrameMetadata(DEFAULT_FRAME);
 
@@ -18,9 +18,9 @@ export const metadata: Metadata = {
   },
 };
 
-const Page = () => (
+const Page = ({ params }: { params: { creatorId: string } }) => (
   <>
-    <LandingPage />
+    <LeaderboardPage creator={params.creatorId} />
   </>
 );
 
