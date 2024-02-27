@@ -6,7 +6,7 @@ const useLeaderboard = (creator: string) => {
 
   useEffect(() => {
     const init = async () => {
-      const response = await fetch(`/api/getRewardsByCreator?creator=${creator}`);
+      const response = await fetch(`/api/graphData?creator=${creator}`);
       const data = await response.json();
       const filtered = getLeaderboard(data.response);
       setLeaderboard(filtered);
