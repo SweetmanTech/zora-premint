@@ -18,13 +18,10 @@ export const metadata: Metadata = {
   },
 };
 
-const Page = ({ params }: { params: { creatorId: string } }) => {
-  console.log('SWEETS SLUG', params.creatorId);
-  return (
-    <>
-      <LeaderboardPage creator={params.creatorId} />
-    </>
-  );
-};
+const Page = ({ params }: { params: { creatorId: string } }) => (
+  <>
+    <LeaderboardPage creator={params.creatorId} />
+  </>
+);
 
 export default Page;
