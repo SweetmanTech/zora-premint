@@ -1,7 +1,7 @@
 const getIndexedData = async (creator: string) => {
   const graphQLQuery = {
     query: `query($creator: String!) {
-                    ProtocolRewards_RewardsDeposit(limit:10000, where: {creator: {_eq:$creator}}) {
+                    ProtocolRewards_RewardsDeposit(limit:100000, order_by:{buyer:asc} where: {creator: {_eq:$creator}}) {
                         id
                         creator
                         createReferral
@@ -33,26 +33,13 @@ const getIndexedData = async (creator: string) => {
   const response = await fetch('https://indexer.bigdevenergy.link/1abdb8c/v1/graphql', options);
 
   const data = await response.json();
-  console.log(data);
   const rewards: Array<any> = data?.data?.ProtocolRewards_RewardsDeposit;
   results.push(...rewards);
   return results;
 };
 
 const getAllIndexedData = async (creator: string) => {
-  const now = new Date();
-  const millisecondsInADay = 24 * 60 * 60 * 1000;
-  // const initialTimestamp = now.getTime() - millisecondsInADay * days;
   const results = await getIndexedData(creator);
-  // let hasMoreResults = results.length > 0;
-  // while (hasMoreResults) {
-  //   const lastTimestamp = results[results.length - 1].timestamp;
-  //   // eslint-disable-next-line no-await-in-loop
-  //   const newResults = await getIndexedData(lastTimestamp);
-  //   hasMoreResults = newResults.length > 0;
-  //   results.push(...newResults);
-  // }
-
   return results;
 };
 
