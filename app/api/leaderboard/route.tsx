@@ -15,9 +15,3 @@ export async function GET(req: NextRequest) {
   const { ImageResponse } = await import('@vercel/og');
   return new ImageResponse(<Leaderboard leaderboard={filtered.slice(0, 5)} />);
 }
-
-const getTimeTaken = (start: [number, number], end: [number, number]) => {
-  const NS_PER_SEC = 1e9;
-  const diff = end[0] - start[0] + (end[1] - start[1]) / NS_PER_SEC;
-  return diff;
-};
