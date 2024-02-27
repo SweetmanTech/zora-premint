@@ -19,26 +19,3 @@ export const DEFAULT_FRAME = {
   },
   postUrl: `${VERCEL_URL}/api/frame`,
 } as FrameMetadataType;
-
-export const LEADERBOARD = [
-  {
-    buyer: '0xcfbf34d385ea2d5eb947063b67ea226dcda3dc38',
-    totalCreatorReward: '7326000000000000',
-  },
-  {
-    buyer: '0xf70da97812cb96acdf810712aa562db8dfa3dbef',
-    totalCreatorReward: '3330000000000000',
-  },
-  {
-    buyer: '0x5d2b7f517ea0c3a68e58c32f97b2b2c080ea3d6f',
-    totalCreatorReward: '2331000000000000',
-  },
-  {
-    buyer: '0x81f91aca8c05b3eefebc00171139afefac17c9a6',
-    totalCreatorReward: '1665000000000000',
-  },
-  {
-    buyer: '0xcb7504c4cb986e80ab4983b44263381f21273482',
-    totalCreatorReward: '1665000000000000',
-  },
-];
