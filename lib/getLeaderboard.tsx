@@ -4,13 +4,16 @@ const getLeaderboard = (results: any) => {
   results.forEach((result: any) => {
     const buyerAddress = result.buyer;
     const reward = BigInt(result.creatorReward);
+    const editions = 1;
 
     if (summary[buyerAddress]) {
       summary[buyerAddress].totalCreatorReward += reward;
+      summary[buyerAddress].editions += 1;
     } else {
       summary[buyerAddress] = {
         buyer: buyerAddress,
         totalCreatorReward: reward,
+        editions,
       };
     }
   });
@@ -19,6 +22,7 @@ const getLeaderboard = (results: any) => {
     .map((item: any) => ({
       buyer: item.buyer,
       totalCreatorReward: item.totalCreatorReward.toString(),
+      editions: item.editions,
     }))
     .sort((a: any, b: any) => {
       const rewardA = BigInt(a.totalCreatorReward);
