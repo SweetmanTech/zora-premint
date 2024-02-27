@@ -3,7 +3,7 @@ const Avatar = () => (
     alt="Avatar"
     className="rounded-full"
     height="32"
-    src="/zorb.png"
+    src="https://nftstorage.link/ipfs/bafybeifbkoma4zfff5locnoxhgwpx2eehezcbctws32qsf3nsexmgtfboy"
     style={{
       aspectRatio: '32/32',
       objectFit: 'cover',

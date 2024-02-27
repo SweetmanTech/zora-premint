@@ -2,23 +2,14 @@
 
 import { CardContent, Card } from '@/components/Card/Card';
 import LogoutButton from '../LogoutButton';
-import LeaderboardHead from './LeaderboardHead';
-import LeaderboardBody from './LeaderboardBody';
-import LeaderboardProvider from '@/providers/LeaderboardProvider';
+import LeaderboardProvider, { useLeaderboardProvider } from '@/providers/LeaderboardProvider';
+import Leaderboard from '../Leaderboard';
+import LeaderboardCard from './LeaderboardCard';
 
 const LeaderboardPage = ({ creator }: any) => (
   <LeaderboardProvider creator={creator}>
-    <Card className="w-full max-w-4xl">
-      <CardContent className="p-0">
-        <LogoutButton />
-        <div className="overflow-auto">
-          <table className="min-w-full w-full">
-            <LeaderboardHead />
-            <LeaderboardBody />
-          </table>
-        </div>
-      </CardContent>
-    </Card>
+    <LogoutButton />
+    <LeaderboardCard />
   </LeaderboardProvider>
 );
 
