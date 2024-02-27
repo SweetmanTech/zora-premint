@@ -23,9 +23,9 @@ const getLeaderboard = (results: any) => {
     .sort((a: any, b: any) => {
       const rewardA = BigInt(a.totalCreatorReward);
       const rewardB = BigInt(b.totalCreatorReward);
-      if (rewardA > rewardB) return -1; // a before b
-      if (rewardA < rewardB) return 1; // b before a
-      return 0; // unchanged
+      if (rewardA > rewardB) return -1;
+      if (rewardA < rewardB) return 1;
+      return 0;
     });
 };
 
