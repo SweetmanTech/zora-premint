@@ -1,4 +1,4 @@
-import { DEFAULT_CREATOR_ADDRESS, VERCEL_URL } from '@/lib/consts';
+import { VERCEL_URL } from '@/lib/consts';
 import getButtons from '@/lib/getButtons';
 import getCreatorId from '@/lib/getCreatorId';
 import { FrameRequest, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const getResponse = async (req: NextRequest): Promise<NextResponse> => {
   let buttonIndex = 1;
-  let creatorId = DEFAULT_CREATOR_ADDRESS
+  let creatorId
   try {
     const body: FrameRequest = await req.json();
     const { untrustedData } = body;
