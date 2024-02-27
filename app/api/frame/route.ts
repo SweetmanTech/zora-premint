@@ -1,46 +1,22 @@
 import { DEFAULT_CREATOR_ADDRESS, VERCEL_URL } from '@/lib/consts';
 import getButtons from '@/lib/getButtons';
+import getCreatorId from '@/lib/getCreatorId';
 import { FrameRequest, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
 import { NextRequest, NextResponse } from 'next/server';
-import { createPublicClient, http } from 'viem';
-import { mainnet } from 'viem/chains';
-import { normalize } from 'viem/ens'
 
-async function getResponse(req: NextRequest): Promise<NextResponse> {
-  let text: string | undefined = '';
+const getResponse = async (req: NextRequest): Promise<NextResponse> => {
   let buttonIndex = 1;
   let creatorId = DEFAULT_CREATOR_ADDRESS
   try {
     const body: FrameRequest = await req.json();
     const { untrustedData } = body;
     const {url, inputText} = untrustedData
-    if (inputText) {
-      if (inputText.includes(".eth")) {
-        const publicClient = createPublicClient({ 
-          chain: mainnet,
-          transport: http()
-        })
-        creatorId = await publicClient.getEnsAddress({
-          name: normalize(inputText),
-        }) as any
-      } else if (inputText.includes("0x")) {
-        creatorId=inputText
-      }
-    }
-    if (creatorId === DEFAULT_CREATOR_ADDRESS) {
-      const parts = url.split("creator/");
-      creatorId = parts[1];
-    }
-   
-    console.log("SWEETS BODY", untrustedData)
-
+    creatorId = await getCreatorId(inputText, url)
     buttonIndex = untrustedData.buttonIndex;
   } catch (error) {
     console.error('Error parsing JSON from request', error);
   }
-
   const buttons = getButtons();
-
   const frame = {
     buttons,
     image: {
