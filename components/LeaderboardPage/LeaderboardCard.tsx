@@ -4,7 +4,6 @@ import Leaderboard from '../Leaderboard';
 
 const LeaderboardCard = () => {
   const { leaderboard } = useLeaderboardProvider() as any;
-  console.log('SWEETS LEADERBOARD', leaderboard);
 
   return (
     <Card className="w-full max-w-4xl">
