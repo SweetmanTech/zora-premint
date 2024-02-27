@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getRewardsDepositEventsByCreator } from '../../../lib/getRewardsDepositEventsByCreateReferral';
 import getAllIndexedData from '@/lib/getIndexedData';
-async function getRewardsByTimestamp(req: NextRequest): Promise<NextResponse> {
+async function getCreatorRewards(req: NextRequest): Promise<NextResponse> {
   const creator = req.nextUrl.searchParams.get('creator');
   if (!creator) {
     return new NextResponse('Missing Creator', {
@@ -17,5 +16,5 @@ async function getRewardsByTimestamp(req: NextRequest): Promise<NextResponse> {
   });
 }
 export async function GET(req: NextRequest): Promise<NextResponse> {
-  return getRewardsByTimestamp(req);
+  return getCreatorRewards(req);
 }
