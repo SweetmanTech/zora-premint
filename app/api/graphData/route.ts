@@ -8,11 +8,8 @@ async function getRewardsByTimestamp(req: NextRequest): Promise<NextResponse> {
       status: 422,
     });
   }
-  const response = await getAllIndexedData(creator);
-  const res = {
-    recordsCount: response.length,
-    response,
-  };
+  const res = await getAllIndexedData(creator);
+
   return new NextResponse(JSON.stringify(res), {
     headers: {
       'content-type': 'application/json',

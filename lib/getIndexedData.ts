@@ -1,4 +1,4 @@
-const getIndexedData = async (creator: string) => {
+const getIndexedData = async (creator: string | null) => {
   const graphQLQuery = {
     query: `query($creator: String!) {
                     ProtocolRewards_RewardsDeposit(limit:100000, order_by:{buyer:asc} where: {creator: {_eq:$creator}}) {
@@ -38,9 +38,12 @@ const getIndexedData = async (creator: string) => {
   return results;
 };
 
-const getAllIndexedData = async (creator: string) => {
+const getAllIndexedData = async (creator: string | null) => {
   const results = await getIndexedData(creator);
-  return results;
+  return {
+    recordsCount: results.length,
+    response: results,
+  };
 };
 
 export default getAllIndexedData;
