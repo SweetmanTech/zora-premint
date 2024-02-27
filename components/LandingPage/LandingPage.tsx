@@ -14,7 +14,7 @@ const LandingPage = () => {
   useEffect(() => {
     if (!connectedWallet || !authenticated || !ready) return;
     router.push(`/creator/${connectedWallet}`);
-  }, [connectedWallet]);
+  }, [connectedWallet, authenticated, ready]);
 
   return (
     <div
