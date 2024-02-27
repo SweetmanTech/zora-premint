@@ -62,7 +62,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['var(--font-sans)', ...fontFamily.sans],
-        helvetica: ['HelveticaNeue', 'sans-serif'], // Add your custom font alongside fallback fonts
+        helvetica: ['HelveticaNeue', 'sans-serif'],
       },
       keyframes: {
         'accordion-down': {
