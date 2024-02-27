@@ -1,25 +1,9 @@
 import { getFrameMetadata } from '@coinbase/onchainkit/frame';
 import type { Metadata } from 'next';
-import { VERCEL_URL } from '@/lib/consts';
+import { DEFAULT_FRAME, VERCEL_URL } from '@/lib/consts';
 import LeaderboardPage from '@/components/LeaderboardPage/LeaderboardPage';
 
-const frameMetadata = getFrameMetadata({
-  buttons: [
-    {
-      label: '7 day',
-    },
-    {
-      label: '14 day',
-    },
-    {
-      label: '30 day',
-    },
-  ],
-  image: {
-    src: `https://my-first-frame-xi.vercel.app/api/og`,
-  },
-  postUrl: `${VERCEL_URL}/api/frame`,
-});
+const frameMetadata = getFrameMetadata(DEFAULT_FRAME);
 
 export const metadata: Metadata = {
   title: 'datamuse.xyz',
