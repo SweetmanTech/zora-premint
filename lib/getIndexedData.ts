@@ -30,7 +30,7 @@ const getIndexedData = async (creator: string | null) => {
     body: JSON.stringify(graphQLQuery),
   };
   const results = [];
-  const response = await fetch('https://indexer.bigdevenergy.link/1abdb8c/v1/graphql', options);
+  const response = await fetch(`${process.env.GRAPHQL_API}`, options);
 
   const data = await response.json();
   const rewards: Array<any> = data?.data?.ProtocolRewards_RewardsDeposit;
