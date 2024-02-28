@@ -15,7 +15,6 @@ const getLeaderboard = (results: any) => {
         totalCreatorReward: reward,
         editions,
       };
-      console.log('SWEETS totalCreatorReward', reward);
     }
   });
 

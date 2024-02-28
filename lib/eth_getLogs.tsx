@@ -37,16 +37,6 @@ export const getLogs = async (
     });
     console.log('SWEETS dataWithChainId', dataWithChainId);
 
-    // let requests: Promise<any> | any = [];
-    // for (let i = 0; i < dataWithChainId.length; i++) {
-    //   const log = dataWithChainId[i];
-    //   requests.push(getPayerFromTransaction(log.transactionHash, endpoint));
-    // }
-    // const payerAddresses = await Promise.all(requests);
-    // for (let i = 0; i < dataWithChainId.length; i++) {
-    //   dataWithChainId[i].buyer = payerAddresses[i];
-    // }
-
     return dataWithChainId;
   } catch (err) {
     // eslint-disable-next-line no-console
