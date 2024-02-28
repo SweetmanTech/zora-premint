@@ -1,9 +1,9 @@
 import { getPayerFromTransaction } from './eth_getTransactionByHash';
 
 export const getLogs = async (
-  contractAddress: String,
+  contractAddress: String[],
   topics: Array<String>,
-  latestBlock: number | string | bigint,
+  toBlock: number | string | bigint,
   fromBlock: number | string | bigint,
   endpoint: string | any,
   chainId: number | string | bigint,
@@ -15,14 +15,14 @@ export const getLogs = async (
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        id: 0,
+        id: 1,
         jsonrpc: '2.0',
         method: 'eth_getLogs',
         params: [
           {
-            fromBlock,
-            toBlock: latestBlock,
             address: contractAddress,
+            fromBlock,
+            toBlock,
             topics,
           },
         ],
@@ -35,15 +35,6 @@ export const getLogs = async (
         chainId,
       };
     });
-    let requests: Promise<any> | any = [];
-    for (let i = 0; i < dataWithChainId.length; i++) {
-      const log = dataWithChainId[i];
-      requests.push(getPayerFromTransaction(log.transactionHash, endpoint));
-    }
-    const payerAddresses = await Promise.all(requests);
-    for (let i = 0; i < dataWithChainId.length; i++) {
-      dataWithChainId[i].buyer = payerAddresses[i];
-    }
     return dataWithChainId;
   } catch (err) {
     // eslint-disable-next-line no-console

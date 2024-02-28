@@ -1,5 +1,4 @@
 import Leaderboard from '@/components/Leaderboard';
-import { VERCEL_URL } from '@/lib/consts';
 import getAllIndexedData from '@/lib/getIndexedData';
 import getLeaderboard from '@/lib/getLeaderboard';
 import { NextRequest } from 'next/server';
