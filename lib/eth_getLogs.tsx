@@ -35,8 +35,6 @@ export const getLogs = async (
         chainId,
       };
     });
-    console.log('SWEETS dataWithChainId', dataWithChainId);
-
     return dataWithChainId;
   } catch (err) {
     // eslint-disable-next-line no-console
