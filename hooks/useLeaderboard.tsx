@@ -9,7 +9,7 @@ const useLeaderboard = (creator: string) => {
     const init = async () => {
       const response = await fetch(`/api/graphData?creator=${creator}`);
       const data = await response.json();
-      const filtered = getLeaderboard(data.response);
+      const filtered = getLeaderboard(data.response).splice(0, 5);
       setLeaderboard(filtered);
       try {
         const named = await getNames(filtered);

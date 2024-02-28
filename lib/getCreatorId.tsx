@@ -1,15 +1,10 @@
-import { createPublicClient, http } from 'viem';
-import { mainnet } from 'viem/chains';
 import { normalize } from 'viem/ens';
+import { ethPublicClient } from './publicClient';
 
 const getCreatorId = async (inputText: string, url: string) => {
   if (inputText) {
     if (inputText.includes('.eth')) {
-      const publicClient = createPublicClient({
-        chain: mainnet,
-        transport: http(),
-      });
-      const creatorId = (await publicClient.getEnsAddress({
+      const creatorId = (await ethPublicClient.getEnsAddress({
         name: normalize(inputText),
       })) as any;
       return creatorId;
