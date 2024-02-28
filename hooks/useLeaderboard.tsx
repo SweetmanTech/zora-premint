@@ -12,8 +12,10 @@ const useLeaderboard = (creator: string) => {
   useEffect(() => {
     const init = async () => {
       try {
-        const zoraData = await getZoraData(creator);
-        const soundData = await getSoundData(creator);
+        const [zoraData, soundData] = await Promise.all([
+          getZoraData(creator),
+          getSoundData(creator),
+        ]);
         const zoraFiltered = getLeaderboard(zoraData.response);
         const final = mergeLeaderboardData(zoraFiltered, soundData);
         const sorted = getSortedLeaderboard(final);
