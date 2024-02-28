@@ -1,28 +1,29 @@
-const mergeLeaderboardData = (filtered: any, parsed: any) => {
-  const combined = { ...filtered, ...parsed };
+const mergeLeaderboardData = (filtered, parsed) => {
+  const combinedObj = {} as any;
 
-  // Merge the objects, summing totalCreatorReward and editions for duplicate buyers
-  Object.keys(combined).forEach((buyer) => {
-    // Check if this buyer exists in both filtered and parsed
-    if (filtered[buyer] && parsed[buyer]) {
-      combined[buyer] = {
+  // Function to add or update the combined object
+  const addToCombined = (entry) => {
+    const { buyer, totalCreatorReward, editions } = entry;
+    if (combinedObj[buyer]) {
+      combinedObj[buyer].totalCreatorReward = (
+        BigInt(combinedObj[buyer].totalCreatorReward) + BigInt(totalCreatorReward)
+      ).toString();
+      combinedObj[buyer].editions += editions;
+    } else {
+      combinedObj[buyer] = {
         buyer,
-        totalCreatorReward: (
-          BigInt(filtered[buyer].totalCreatorReward) + BigInt(parsed[buyer].totalCreatorReward)
-        ).toString(),
-        editions: filtered[buyer].editions + parsed[buyer].editions,
+        totalCreatorReward,
+        editions,
       };
-    } else if (parsed[buyer]) {
-      // If the buyer only exists in parsed, use its data
-      combined[buyer] = parsed[buyer];
-    } else if (filtered[buyer]) {
-      // If the buyer only exists in filtered, use its data
-      combined[buyer] = filtered[buyer];
     }
-  });
+  };
+
+  // Process each array
+  filtered.forEach(addToCombined);
+  parsed.forEach(addToCombined);
 
   // Convert the combined object back into an array
-  const combinedArray = Object.values(combined);
+  const combinedArray = Object.values(combinedObj);
 
   return combinedArray;
 };
