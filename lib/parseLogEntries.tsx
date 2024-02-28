@@ -1,7 +1,7 @@
-const parseLogEntries = (logEntries) => {
+const parseLogEntries = (logEntries: any) => {
   const response = {} as any;
 
-  logEntries.forEach((log) => {
+  logEntries.forEach((log: any) => {
     // Extract topics[2] - the `to` address, remove leading zeros, and ensure it's in a standard Ethereum address format
     const buyerAddress = '0x' + log.topics[2].substring(26);
 

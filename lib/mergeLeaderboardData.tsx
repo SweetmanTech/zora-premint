@@ -1,4 +1,4 @@
-const mergeLeaderboardData = (filtered, parsed) => {
+const mergeLeaderboardData = (filtered: any, parsed: any) => {
   const combined = { ...filtered, ...parsed };
 
   // Merge the objects, summing totalCreatorReward and editions for duplicate buyers

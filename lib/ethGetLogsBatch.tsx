@@ -6,7 +6,7 @@ export const ethGetLogsBatch = async (batchPayload: any[]) => {
   try {
     const response = await axios.post(endpoint, batchPayload);
     const batchedLogs = response.data;
-    return batchedLogs.map((res) => res.result);
+    return batchedLogs.map((res: any) => res.result);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Error fetching logs in batch:', error);
