@@ -9,10 +9,11 @@ const useLeaderboard = (creator: string) => {
     const init = async () => {
       const response = await fetch(`/api/graphData?creator=${creator}`);
       const data = await response.json();
-      const filtered = getLeaderboard(data.response).splice(0, 5);
+      const filtered = getLeaderboard(data.response).splice(0, 10);
       setLeaderboard(filtered);
       try {
         const named = await getNames(filtered);
+        console.log('SWEETS NAMED', named);
         setLeaderboard(named);
       } catch (error) {
         console.error(error);

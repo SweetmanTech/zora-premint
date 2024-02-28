@@ -1,6 +1,6 @@
 import Avatar from '../Avatar';
 
-const LeaderboardRow = ({ rank, name, text }: any) => (
+const LeaderboardRow = ({ rank, name, text, image }: any) => (
   <tr
     className="bg-gray-50 dark:bg-gray-950"
     tw="bg-gray-50 dark:bg-gray-950 flex justify-between text-2xl"
@@ -12,7 +12,7 @@ const LeaderboardRow = ({ rank, name, text }: any) => (
       #{rank}
     </td>
     <td className="px-4 py-4 flex items-center gap-3" tw="px-4 py-4 flex items-center gap-3">
-      <Avatar />
+      <Avatar src={image} />
       <div tw="px-4">{name}</div>
     </td>
     <td className="px-4 py-4 text-sm text-gray-500" tw="px-4 py-4 text-gray-500">
