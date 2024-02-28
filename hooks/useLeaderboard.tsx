@@ -8,7 +8,11 @@ const useLeaderboard = (creator: string) => {
   useEffect(() => {
     const init = async () => {
       const response = await fetch(`/api/graphData?creator=${creator}`);
+      const soundResponse = await fetch(`/api/sound/contracts?creator=${creator}`);
       const data = await response.json();
+      const soundData = await soundResponse.json();
+      console.log('SWEETS soundData', soundData);
+
       const filtered = getLeaderboard(data.response);
       setLeaderboard(filtered);
       try {
