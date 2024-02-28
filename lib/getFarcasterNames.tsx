@@ -26,7 +26,7 @@ const getFarcasterNames = async (rawData: any[]) => {
           return null;
         }
       } catch (err) {
-        console.error('SWEETS ERROR', err);
+        console.error(err);
         itemsToProcessFurther.push(data);
         return null;
       }
