@@ -11,12 +11,9 @@ const useLeaderboard = (creator: string) => {
       const data = await response.json();
       const filtered = getLeaderboard(data.response);
       setLeaderboard(filtered);
-
       try {
-        // TODO: convert addresses to ENS
         const named = await getNames(filtered);
         setLeaderboard(named);
-        console.log('SWEETS named', named);
       } catch (error) {
         console.error(error);
       }
