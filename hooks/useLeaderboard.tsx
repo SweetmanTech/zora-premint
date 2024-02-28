@@ -1,5 +1,9 @@
 import getLeaderboard from '@/lib/getLeaderboard';
 import getNames from '@/lib/getNames';
+import getSortedLeaderboard from '@/lib/getSortedLeaderboard';
+import getSoundData from '@/lib/getSoundData';
+import getZoraData from '@/lib/getZoraData';
+import mergeLeaderboardData from '@/lib/mergeLeaderboardData';
 import { useEffect, useState } from 'react';
 
 const useLeaderboard = (creator: string) => {
@@ -7,12 +11,15 @@ const useLeaderboard = (creator: string) => {
 
   useEffect(() => {
     const init = async () => {
-      const response = await fetch(`/api/graphData?creator=${creator}`);
-      const data = await response.json();
-      const filtered = getLeaderboard(data.response);
-      setLeaderboard(filtered);
       try {
-        const named = await getNames(filtered);
+        const [zoraData, soundData] = await Promise.all([
+          getZoraData(creator),
+          getSoundData(creator),
+        ]);
+        const zoraFiltered = getLeaderboard(zoraData.response);
+        const final = mergeLeaderboardData(zoraFiltered, soundData);
+        const sorted = getSortedLeaderboard(final);
+        const named = await getNames(sorted.splice(0, 100));
         setLeaderboard(named);
       } catch (error) {
         console.error(error);

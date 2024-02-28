@@ -18,19 +18,11 @@ const getLeaderboard = (results: any) => {
     }
   });
 
-  return Object.values(summary)
-    .map((item: any) => ({
-      buyer: item.buyer,
-      totalCreatorReward: item.totalCreatorReward.toString(),
-      editions: item.editions,
-    }))
-    .sort((a: any, b: any) => {
-      const rewardA = BigInt(a.totalCreatorReward);
-      const rewardB = BigInt(b.totalCreatorReward);
-      if (rewardA > rewardB) return -1;
-      if (rewardA < rewardB) return 1;
-      return 0;
-    });
+  return Object.values(summary).map((item: any) => ({
+    buyer: item.buyer,
+    totalCreatorReward: item.totalCreatorReward.toString(),
+    editions: item.editions,
+  }));
 };
 
 export default getLeaderboard;
