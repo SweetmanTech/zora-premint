@@ -1,9 +1,11 @@
-const Avatar = () => (
+const Avatar = ({
+  src = 'https://nftstorage.link/ipfs/bafybeifbkoma4zfff5locnoxhgwpx2eehezcbctws32qsf3nsexmgtfboy',
+}) => (
   <img
     alt="Avatar"
     className="rounded-full"
     height="32"
-    src="https://nftstorage.link/ipfs/bafybeifbkoma4zfff5locnoxhgwpx2eehezcbctws32qsf3nsexmgtfboy"
+    src={src}
     style={{
       aspectRatio: '32/32',
       objectFit: 'cover',

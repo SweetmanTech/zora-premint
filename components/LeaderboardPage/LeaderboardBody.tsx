@@ -11,6 +11,7 @@ const LeaderboardBody = ({ leaderboard }: any) => (
         key={item.buyer}
         rank={index + 1}
         name={item.buyer}
+        image={item?.pfp}
         text={`${formatEther(item.totalCreatorReward)} ETH`}
       />
     ))}
