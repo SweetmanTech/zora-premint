@@ -9,7 +9,7 @@ export const ethGetLogsBatch = async (batchPayload: any[]) => {
     return batchedLogs.map((res: any) => res.result);
   } catch (error) {
     // eslint-disable-next-line no-console
-    console.error('Error fetching logs in batch:', error);
+    console.error(error);
     return [];
   }
 };
