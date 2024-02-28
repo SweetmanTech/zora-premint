@@ -1,4 +1,5 @@
 import getLeaderboard from '@/lib/getLeaderboard';
+import getNames from '@/lib/getNames';
 import { useEffect, useState } from 'react';
 
 const useLeaderboard = (creator: string) => {
@@ -10,6 +11,12 @@ const useLeaderboard = (creator: string) => {
       const data = await response.json();
       const filtered = getLeaderboard(data.response);
       setLeaderboard(filtered);
+      try {
+        const named = await getNames(filtered);
+        setLeaderboard(named);
+      } catch (error) {
+        console.error(error);
+      }
     };
 
     if (!creator) return;
