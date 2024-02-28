@@ -4,15 +4,11 @@ import getSortedLeaderboard from './getSortedLeaderboard';
 
 const getNames = async (rawData: any[]) => {
   const { match: farcasterRows, noMatch } = await getFarcasterNames(rawData);
-
   let ensMatch = [];
   if (noMatch.length > 0) {
     ensMatch = await getEnsNames(noMatch);
   }
-
-  // Return the merged and updated rawDataWithPfp array
   const merged = [...farcasterRows, ...ensMatch] as any;
-
   return getSortedLeaderboard(merged);
 };
 
