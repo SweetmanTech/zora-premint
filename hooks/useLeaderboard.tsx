@@ -13,20 +13,20 @@ const useLeaderboard = (creator: string) => {
 
   useEffect(() => {
     const init = async () => {
-      const zoraData = await getZoraData(creator);
-      const soundData = await getSoundData(creator);
-      const zoraFiltered = getLeaderboard(zoraData.response);
-      setLeaderboard(zoraFiltered);
-
-      console.log('sweets zoraFiltered', zoraFiltered);
-      console.log('sweets soundData', soundData);
-      const final = mergeLeaderboardData(zoraFiltered, soundData);
-      console.log('SWEETS final', final);
-      const sorted = getSortedLeaderboard(final);
-      console.log('SWEETS sorted', sorted);
-      setLeaderboard(sorted.splice(0, 22));
-
       try {
+        const zoraData = await getZoraData(creator);
+        const soundData = await getSoundData(creator);
+        const zoraFiltered = getLeaderboard(zoraData.response);
+        // setLeaderboard(zoraFiltered);
+
+        console.log('sweets zoraFiltered', zoraFiltered);
+        console.log('sweets soundData', soundData);
+        const final = mergeLeaderboardData(zoraFiltered, soundData);
+        console.log('SWEETS final', final);
+        const sorted = getSortedLeaderboard(final);
+        console.log('SWEETS sorted', sorted);
+        // setLeaderboard(sorted.splice(0, 22));
+
         const named = await getNames(sorted.splice(0, 22));
         setLeaderboard(named);
       } catch (error) {
