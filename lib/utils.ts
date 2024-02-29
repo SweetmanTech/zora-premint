@@ -1,6 +1,6 @@
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { basePublicClient, optimismPublicClient } from './publicClient';
+import { basePublicClient, optimismPublicClient, ethPublicClient } from './publicClient';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -8,6 +8,8 @@ export function cn(...inputs: ClassValue[]) {
 
 export const mapChainIdToClient = (chainId: number) => {
   switch (chainId) {
+    case 1:
+      return ethPublicClient;
     case 10:
       return optimismPublicClient;
     case 8453:
