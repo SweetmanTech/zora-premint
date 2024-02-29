@@ -34,8 +34,8 @@ export async function GET(req: NextRequest) {
   const [regularFontData, boldFontData] = await Promise.all([regularFont, boldFont]);
 
   const { ImageResponse } = await import('@vercel/og');
-  const imageWidth = 1200; // Example width in pixels
-  const imageHeight = 1200; // Example height in pixels
+  const imageWidth = 1200;
+  const imageHeight = 1200;
 
   return new ImageResponse(
     (
