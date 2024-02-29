@@ -4,17 +4,13 @@ export const VERCEL_URL = process.env.NEXT_PUBLIC_FRAME_URL || 'http://localhost
 export const DEFAULT_FRAME = {
   buttons: [
     {
-      label: '7 day',
-    },
-    {
-      label: '14 day',
-    },
-    {
-      label: '30 day',
+      action: 'link',
+      label: 'datamuse.xyz',
+      target: 'https://datamuse.vercel.app',
     },
   ],
   image: {
-    src: `https://my-first-frame-xi.vercel.app/api/og`,
+    src: `${VERCEL_URL}/api/og`,
   },
   postUrl: `${VERCEL_URL}/api/frame`,
 } as FrameMetadataType;

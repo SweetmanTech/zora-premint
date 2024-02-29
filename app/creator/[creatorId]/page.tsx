@@ -1,4 +1,4 @@
-import { getFrameMetadata } from '@coinbase/onchainkit/frame';
+import { getFrameMetadata } from '@coinbase/onchainkit';
 import type { Metadata } from 'next';
 import { DEFAULT_FRAME, VERCEL_URL } from '@/lib/consts';
 import LeaderboardPage from '@/components/LeaderboardPage/LeaderboardPage';

@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-export const ethGetLogsBatch = async (batchPayload: any[]) => {
-  const endpoint = 'https://opt-mainnet.g.alchemy.com/v2/mBeLxutFN16DEheyiUtcoKdis0Jxn68H';
-
+export const ethGetLogsBatch = async (batchPayload: any[], endpoint: string) => {
   try {
     const response = await axios.post(endpoint, batchPayload);
     const batchedLogs = response.data;
