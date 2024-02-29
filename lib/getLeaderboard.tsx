@@ -1,4 +1,6 @@
-const getLeaderboard = (results: any) => {
+import getFormattedData from './getFormattedData';
+
+const getLeaderboard = (results: any, ethPrice?: any) => {
   const summary = {} as any;
 
   results.forEach((result: any) => {
@@ -18,11 +20,7 @@ const getLeaderboard = (results: any) => {
     }
   });
 
-  return Object.values(summary).map((item: any) => ({
-    buyer: item.buyer,
-    totalCreatorReward: item.totalCreatorReward.toString(),
-    editions: item.editions,
-  }));
+  return getFormattedData(summary, ethPrice);
 };
 
 export default getLeaderboard;

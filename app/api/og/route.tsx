@@ -11,8 +11,6 @@ const boldFont = fetch(new URL('/public/assets/HelveticaNeueBold.ttf', import.me
 );
 
 export async function GET(req: NextRequest) {
-  const queryParams = req.nextUrl.searchParams;
-
   const [regularFontData, boldFontData] = await Promise.all([regularFont, boldFont]);
 
   const { ImageResponse } = await import('@vercel/og');

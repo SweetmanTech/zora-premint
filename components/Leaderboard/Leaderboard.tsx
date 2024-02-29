@@ -1,7 +1,7 @@
 import LeaderboardBody from '../LeaderboardPage/LeaderboardBody';
 import LeaderboardHead from '../LeaderboardPage/LeaderboardHead';
 
-const Leaderboard = ({ leaderboard }: any) => (
+const Leaderboard = ({ leaderboard, isFrame = false }: any) => (
   <div
     className="overflow-auto"
     style={{
@@ -11,7 +11,7 @@ const Leaderboard = ({ leaderboard }: any) => (
   >
     <table className="min-w-full w-full" tw="min-w-full w-full flex flex-col">
       <LeaderboardHead />
-      <LeaderboardBody leaderboard={leaderboard} />
+      <LeaderboardBody leaderboard={leaderboard} isFrame={isFrame} />
     </table>
   </div>
 );
