@@ -28,9 +28,9 @@ export async function GET(req: NextRequest) {
           color: 'black',
           background: 'white',
           backgroundImage:
-            'url("https://nftstorage.link/ipfs/bafybeiboye2kdtyziefq35p44z3sikceuehlvqn772k3h63sn6riwbbbku")', // Add your background image URL here
-          backgroundSize: 'cover', // Ensure the background covers the div
-          backgroundPosition: 'center', // Center the background image
+            'url("https://nftstorage.link/ipfs/bafybeiboye2kdtyziefq35p44z3sikceuehlvqn772k3h63sn6riwbbbku")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
           width: '100%',
           height: '100%',
           padding: '50px 200px',
