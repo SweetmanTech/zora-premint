@@ -3,8 +3,17 @@ import { NextRequest } from 'next/server';
 
 export const runtime = 'edge';
 
+const regularFont = fetch(new URL('/public/assets/HelveticaNeueMedium.ttf', import.meta.url)).then(
+  (res) => res.arrayBuffer(),
+);
+const boldFont = fetch(new URL('/public/assets/HelveticaNeueBold.ttf', import.meta.url)).then(
+  (res) => res.arrayBuffer(),
+);
+
 export async function GET(req: NextRequest) {
   const queryParams = req.nextUrl.searchParams;
+
+  const [regularFontData, boldFontData] = await Promise.all([regularFont, boldFont]);
 
   const { ImageResponse } = await import('@vercel/og');
   return new ImageResponse(
@@ -26,15 +35,28 @@ export async function GET(req: NextRequest) {
           height: '100%',
           padding: '50px 200px',
           textAlign: 'center',
+          fontFamily: '"HelveticaBold"',
         }}
         tw="flex gap-3"
       >
-        <LandingPageHeader />
+        <LandingPageHeader isServer />
       </div>
     ),
     {
       width: 1200,
       height: 630,
+      fonts: [
+        {
+          name: 'Helvetica',
+          data: regularFontData,
+          weight: 400,
+        },
+        {
+          name: 'HelveticaBold',
+          data: boldFontData,
+          weight: 700,
+        },
+      ],
     },
   );
 }

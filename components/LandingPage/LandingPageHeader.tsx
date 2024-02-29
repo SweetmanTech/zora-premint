@@ -1,20 +1,20 @@
-const LandingPageHeader = () => (
+const LandingPageHeader = ({ isServer }: any) => (
   <div
     style={{ display: 'flex' }}
     className="space-y-3"
-    tw="space-y-3 flex flex-col items-center font-helvetica text-center"
+    tw="flex flex-col items-center text-center w-[1000px]"
   >
-    <h1
+    <p
       className="text-4xl font-bold tracking-tighter sm:text-5xl"
-      tw="text-4xl font-bold tracking-tighter sm:text-5xl"
+      tw="text-7xl font-black pt-[100px]"
     >
       Know Your Community.
-    </h1>
+    </p>
     <p
       className="max-w-[600px] text-md md:text-xl font-bold"
-      tw="max-w-[600px] text-md md:text-xl font-bold"
+      tw="max-w-[600px] text-4xl font-bold mt-[-25]"
     >
-      Log in to view your most loyal collectors
+      {!isServer && `Log in to`} view your most loyal collectors
     </p>
   </div>
 );
