@@ -1,7 +1,7 @@
 const LandingPageHeader = ({ isServer }: any) => (
   <div
     style={{ display: 'flex' }}
-    className="space-y-3"
+    className="space-y-3 flex flex-col"
     tw="flex flex-col items-center text-center w-[1000px]"
   >
     <p
