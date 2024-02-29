@@ -4,7 +4,7 @@ import { formatEther } from 'viem';
 const LeaderboardBody = ({ leaderboard }: any) => (
   <tbody
     className="divide-y divide-gray-200 dark:divide-gray-800"
-    tw="divide-y divide-gray-200 dark:divide-gray-800 flex flex-col h-[90%] justify-between"
+    tw="divide-y divide-gray-200 dark:divide-gray-800 flex flex-col"
   >
     {leaderboard.map((item: any, index: number) => (
       <LeaderboardRow
@@ -12,7 +12,7 @@ const LeaderboardBody = ({ leaderboard }: any) => (
         rank={index + 1}
         name={item.buyer}
         image={item?.pfp}
-        text={`${formatEther(item.totalCreatorReward)} ETH`}
+        text={`$${item.totalCreatorRewardUsd}`}
       />
     ))}
   </tbody>
