@@ -1,4 +1,4 @@
-import { formatEther } from 'viem';
+import getFormattedData from './getFormattedData';
 
 const getLeaderboard = (results: any, ethPrice?: any) => {
   const summary = {} as any;
@@ -20,16 +20,7 @@ const getLeaderboard = (results: any, ethPrice?: any) => {
     }
   });
 
-  return Object.values(summary).map((item: any) => {
-    const ethValue = formatEther(item.totalCreatorReward.toString());
-    const usdValue = (ethPrice * parseFloat(ethValue)).toFixed(2);
-    return {
-      buyer: item.buyer,
-      totalCreatorReward: item.totalCreatorReward.toString(),
-      totalCreatorRewardUsd: usdValue,
-      editions: item.editions,
-    };
-  });
+  return getFormattedData(summary, ethPrice);
 };
 
 export default getLeaderboard;

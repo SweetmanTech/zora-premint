@@ -1,9 +1,7 @@
 'use client';
 
-import { CardContent, Card } from '@/components/Card/Card';
 import LogoutButton from '../LogoutButton';
-import LeaderboardProvider, { useLeaderboardProvider } from '@/providers/LeaderboardProvider';
-import Leaderboard from '../Leaderboard';
+import LeaderboardProvider from '@/providers/LeaderboardProvider';
 import LeaderboardCard from './LeaderboardCard';
 import WarpcastButton from '../WarpcastButton';
 

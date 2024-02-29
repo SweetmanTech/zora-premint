@@ -1,7 +1,7 @@
 import shortenAddress from '@/lib/shortenAddress';
 import Avatar from '../Avatar';
 
-const LeaderboardRow = ({ rank, name, text, image }: any) => {
+const LeaderboardRow = ({ rank, name, text, image, isFrame }: any) => {
   const isOdd = rank % 2 !== 0;
   const bgColor = isOdd ? 'bg-white bg-opacity-80' : 'bg-[#EAE5F0] bg-opacity-80';
 
@@ -16,18 +16,21 @@ const LeaderboardRow = ({ rank, name, text, image }: any) => {
       >
         {rank}
       </td>
-      <td
-        className="px-4 py-4 flex items-center gap-3"
-        tw="text-5xl px-4 py-4 flex items-center gap-3"
-      >
-        <Avatar size={'125'} src={image} />
+      <td className="flex">
+        <div
+          className="px-4 py-4 flex items-center gap-3"
+          tw="text-5xl px-4 py-4 flex items-center gap-3"
+        >
+          <Avatar size={isFrame ? '125' : '32'} src={image} />
+        </div>
+        <div
+          className="px-4 py-4 flex items-center gap-3"
+          tw="text-5xl px-4 py-4 flex items-center gap-3"
+        >
+          <div tw="px-4">{shortenAddress(name)}</div>
+        </div>
       </td>
-      <td
-        className="px-4 py-4 flex items-center gap-3"
-        tw="text-5xl px-4 py-4 flex items-center gap-3"
-      >
-        <div tw="px-4">{shortenAddress(name)}</div>
-      </td>
+
       <td className="px-4 py-4 text-gray-500" tw="text-5xl px-4 py-4">
         {text}
       </td>
