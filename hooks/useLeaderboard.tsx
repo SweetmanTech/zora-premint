@@ -1,3 +1,4 @@
+import getEthPrice from '@/lib/getEthPrice';
 import getLeaderboard from '@/lib/getLeaderboard';
 import getNames from '@/lib/getNames';
 import getSortedLeaderboard from '@/lib/getSortedLeaderboard';
@@ -12,13 +13,22 @@ const useLeaderboard = (creator: string) => {
   useEffect(() => {
     const init = async () => {
       try {
+        const { USD } = await getEthPrice();
+
         const [zoraData, soundData] = await Promise.all([
           getZoraData(creator),
-          getSoundData(creator),
+          getSoundData(creator, USD),
         ]);
-        const zoraFiltered = getLeaderboard(zoraData.response);
-        const final = mergeLeaderboardData(zoraFiltered, soundData);
-        const sorted = getSortedLeaderboard(final);
+
+        console.log('SWEETS USD', USD);
+        console.log('SWEETS soundData', soundData);
+        const zoraFiltered = getLeaderboard(zoraData.response, USD);
+        console.log('SWEETS zoraFiltered', zoraFiltered);
+
+        const merged = mergeLeaderboardData(zoraFiltered, soundData);
+        console.log('SWEETS merged', merged);
+
+        const sorted = getSortedLeaderboard(merged);
         const named = await getNames(sorted.splice(0, 100));
         setLeaderboard(named);
       } catch (error) {
