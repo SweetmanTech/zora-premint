@@ -42,7 +42,6 @@ export const getEditionsByCreator = async (creator: string) => {
   chains.forEach((chainId, index) => {
     chainIdToContracts[chainId] = contracts[index];
   });
-  console.log('chainIdToContracts', chainIdToContracts);
   return chainIdToContracts;
 };
 const getContracts = (data: any) => {
