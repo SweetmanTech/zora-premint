@@ -4,7 +4,6 @@ import Leaderboard from '@/components/Leaderboard';
 import getEthPrice from '@/lib/getEthPrice';
 import getAllIndexedData from '@/lib/getIndexedData';
 import getLeaderboard from '@/lib/getLeaderboard';
-import getSortedLeaderboard from '@/lib/getSortedLeaderboard';
 import { ethPublicClient } from '@/lib/publicClient';
 import { NextRequest } from 'next/server';
 import { normalize } from 'viem/ens';
@@ -22,10 +21,8 @@ export async function GET(req: NextRequest) {
   const queryParams = req.nextUrl.searchParams;
   let creator = queryParams.get('creator');
   const { USD } = await getEthPrice();
-  console.log('SWEETS PRICE', USD);
   const dataSet = await getAllIndexedData(creator);
   const filtered = getLeaderboard(dataSet.response, USD);
-  const sorted = getSortedLeaderboard(filtered);
   try {
     creator = await ethPublicClient.getEnsName({
       address: normalize(creator as string) as any,
@@ -56,7 +53,7 @@ export async function GET(req: NextRequest) {
         tw="flex flex-col px-3"
       >
         <ArtistTitle creator={creator} />
-        <Leaderboard leaderboard={sorted.slice(0, 5)} />
+        <Leaderboard leaderboard={filtered.slice(0, 5)} />
         <FrameFooter />
       </div>
     ),
