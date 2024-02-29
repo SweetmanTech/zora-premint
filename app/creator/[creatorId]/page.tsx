@@ -22,6 +22,7 @@ const Page = ({ params }: { params: { creatorId: string } }) => (
       buttons={getButtons()}
       image={{
         src: `${VERCEL_URL}/api/leaderboard?creator=${params.creatorId}`,
+        aspectRatio: '1:1',
       }}
       input={{
         text: 'Search a different creator',

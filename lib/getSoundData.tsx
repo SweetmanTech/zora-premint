@@ -1,8 +1,9 @@
 import { getEditionsByCreator } from './getSoundContractsByCreator';
 import getTransferEvents from './getTransferEvents';
 import parseLogEntries from './parseLogEntries';
+import getFormattedData from './getFormattedData';
 
-const getSoundData = async (creator: string) => {
+const getSoundData = async (creator: string, ethPrice: any) => {
   const creatorEditions = await getEditionsByCreator(creator);
   const [baseEditions, optimismEditions, mainNetEditions] = [
     creatorEditions[8453],
@@ -16,11 +17,7 @@ const getSoundData = async (creator: string) => {
   ]);
   const editions = [...mainNetRawTransactions, ...optimismRawTransactions, ...baseRawTransactions];
   const parsed = parseLogEntries(editions);
-  const arrayData = Object.values(parsed).map((item: any) => ({
-    buyer: item.buyer,
-    totalCreatorReward: item.totalCreatorReward.toString(),
-    editions: item.editions,
-  }));
+  const arrayData = getFormattedData(parsed, ethPrice);
   return arrayData;
 };
 
