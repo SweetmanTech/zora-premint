@@ -1,7 +1,8 @@
+import getFormattedData from './getFormattedData';
 import getTransferEvents from './getTransferEvents';
 import parseLogEntries from './parseLogEntries';
 
-const getSoundData = async (creator: string) => {
+const getSoundData = async (creator: string, ethPrice: any) => {
   const soundResponse = await fetch(`/api/sound/contracts?creator=${creator}`);
   const soundData = await soundResponse.json();
   const baseEditions = soundData.response
@@ -16,11 +17,7 @@ const getSoundData = async (creator: string) => {
   ]);
   const editions = [...baseRawTransactions, ...optimismRawTransactions];
   const parsed = parseLogEntries(editions);
-  const arrayData = Object.values(parsed).map((item: any) => ({
-    buyer: item.buyer,
-    totalCreatorReward: item.totalCreatorReward.toString(),
-    editions: item.editions,
-  }));
+  const arrayData = getFormattedData(parsed, ethPrice);
   return arrayData;
 };
 
