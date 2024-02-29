@@ -6,7 +6,7 @@ export const DEFAULT_FRAME = {
     {
       action: 'link',
       label: 'datamuse.xyz',
-      target: 'https://datamuse.vercel.app',
+      target: 'https://datamuse.xyz',
     },
   ],
   image: {
