@@ -1,12 +1,10 @@
+import LandingPageHeader from '@/components/LandingPage/LandingPageHeader';
 import { NextRequest } from 'next/server';
 
 export const runtime = 'edge';
 
 export async function GET(req: NextRequest) {
   const queryParams = req.nextUrl.searchParams;
-  const days = queryParams.get('days') || 30;
-  const response = await fetch(`https://cached.quickindexer.xyz/leaderboard?days=${days}`);
-  const data = await response.json();
 
   const { ImageResponse } = await import('@vercel/og');
   return new ImageResponse(
@@ -20,25 +18,18 @@ export async function GET(req: NextRequest) {
           fontSize: 40,
           color: 'black',
           background: 'white',
+          backgroundImage:
+            'url("https://nftstorage.link/ipfs/bafybeiboye2kdtyziefq35p44z3sikceuehlvqn772k3h63sn6riwbbbku")', // Add your background image URL here
+          backgroundSize: 'cover', // Ensure the background covers the div
+          backgroundPosition: 'center', // Center the background image
           width: '100%',
           height: '100%',
           padding: '50px 200px',
           textAlign: 'center',
         }}
+        tw="flex gap-3"
       >
-        <img
-          alt="zorb"
-          height={50}
-          width={50}
-          src="https://nftstorage.link/ipfs/bafybeifbkoma4zfff5locnoxhgwpx2eehezcbctws32qsf3nsexmgtfboy"
-        />
-        Number of Creators earning on Zora: {data.recordsCount}{' '}
-        <img
-          alt="zorb"
-          height={50}
-          width={50}
-          src="https://nftstorage.link/ipfs/bafybeifbkoma4zfff5locnoxhgwpx2eehezcbctws32qsf3nsexmgtfboy"
-        />
+        <LandingPageHeader />
       </div>
     ),
     {

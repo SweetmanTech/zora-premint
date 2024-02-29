@@ -1,7 +1,7 @@
 import { getFrameMetadata } from '@coinbase/onchainkit/frame';
 import type { Metadata } from 'next';
 import LandingPage from '@/components/LandingPage';
-import { DEFAULT_FRAME } from '@/lib/consts';
+import { DEFAULT_FRAME, VERCEL_URL } from '@/lib/consts';
 
 const frameMetadata = getFrameMetadata(DEFAULT_FRAME);
 
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'data muse',
     description: 'data muse',
-    images: [`https://my-first-frame-xi.vercel.app/api/og`],
+    images: [`https://${VERCEL_URL}/api/og`],
   },
   other: {
     ...frameMetadata,
