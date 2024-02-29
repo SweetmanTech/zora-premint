@@ -1,13 +1,33 @@
-import { optimismPublicClient } from './publicClient';
+import { optimismPublicClient, basePublicClient } from './publicClient';
 import { encodeEventTopics, erc721Abi } from 'viem';
 import { ethGetLogsBatch } from './ethGetLogsBatch';
-
-const getTransferEvents = async (editions: any[]) => {
+const mapChainIdToClient = (chainId: number) => {
+  switch (chainId) {
+    case 10:
+      return optimismPublicClient;
+    case 8453:
+      return basePublicClient;
+    default:
+      throw new Error(`Unsupported chainId: ${chainId}`);
+  }
+};
+const mapChainIdToEndpoint = (chainId: number) => {
+  switch (chainId) {
+    case 10:
+      return 'https://opt-mainnet.g.alchemy.com/v2/mBeLxutFN16DEheyiUtcoKdis0Jxn68H';
+    case 8453:
+      return 'https://base-mainnet.g.alchemy.com/v2/3m9vR6Vx1Yo0NurSa-6r65hGwGWzXvEa';
+    default:
+      throw new Error(`Unsupported chainId: ${chainId}`);
+  }
+};
+const getTransferEvents = async (editions: any[], chainId: number) => {
   const topics = encodeEventTopics({
     abi: erc721Abi,
     eventName: 'Transfer',
   });
-  const latestBlockNumber = await optimismPublicClient.getBlockNumber();
+  const publicClient = mapChainIdToClient(chainId || 10);
+  const latestBlockNumber = await publicClient.getBlockNumber();
   const latestBlock = Number(latestBlockNumber);
   const chunkSize = 1000000;
   const batchRequests = [];
@@ -30,7 +50,8 @@ const getTransferEvents = async (editions: any[]) => {
     });
     id += 1;
   }
-  const batchResults = await ethGetLogsBatch(batchRequests);
+  const endpoint = mapChainIdToEndpoint(chainId);
+  const batchResults = await ethGetLogsBatch(batchRequests, endpoint);
   const filteredResults = batchResults.filter((result: any) => result !== undefined);
   let allLogs = filteredResults.flat();
 
