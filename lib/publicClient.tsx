@@ -1,5 +1,5 @@
 import { createPublicClient, http } from 'viem';
-import { mainnet, optimism } from 'viem/chains';
+import { base, mainnet, optimism } from 'viem/chains';
 
 export const ethPublicClient = createPublicClient({
   chain: mainnet,
@@ -8,5 +8,10 @@ export const ethPublicClient = createPublicClient({
 
 export const optimismPublicClient = createPublicClient({
   chain: optimism,
+  transport: http(),
+});
+
+export const basePublicClient = createPublicClient({
+  chain: base,
   transport: http(),
 });
