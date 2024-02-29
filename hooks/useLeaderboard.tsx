@@ -14,20 +14,12 @@ const useLeaderboard = (creator: string) => {
     const init = async () => {
       try {
         const { USD } = await getEthPrice();
-
         const [zoraData, soundData] = await Promise.all([
           getZoraData(creator),
           getSoundData(creator, USD),
         ]);
-
-        console.log('SWEETS USD', USD);
-        console.log('SWEETS soundData', soundData);
         const zoraFiltered = getLeaderboard(zoraData.response, USD);
-        console.log('SWEETS zoraFiltered', zoraFiltered);
-
         const merged = mergeLeaderboardData(zoraFiltered, soundData);
-        console.log('SWEETS merged', merged);
-
         const sorted = getSortedLeaderboard(merged);
         const named = await getNames(sorted.splice(0, 100));
         setLeaderboard(named);
