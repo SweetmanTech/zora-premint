@@ -1,11 +1,8 @@
-import { getFrameMetadata } from '@coinbase/onchainkit';
 import type { Metadata } from 'next';
-import { DEFAULT_FRAME, VERCEL_URL } from '@/lib/consts';
+import { VERCEL_URL } from '@/lib/consts';
 import LeaderboardPage from '@/components/LeaderboardPage/LeaderboardPage';
 import { FrameMetadata } from '@coinbase/onchainkit';
 import getButtons from '@/lib/getButtons';
-
-const frameMetadata = getFrameMetadata(DEFAULT_FRAME);
 
 export const metadata: Metadata = {
   title: 'datamuse.xyz',

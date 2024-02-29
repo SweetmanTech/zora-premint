@@ -1,6 +1,7 @@
 import ArtistTitle from '@/components/ArtistTitle';
 import FrameFooter from '@/components/FrameFooter';
 import Leaderboard from '@/components/Leaderboard';
+import getEnsName from '@/lib/getEnsName';
 import getEthPrice from '@/lib/getEthPrice';
 import getAllIndexedData from '@/lib/getIndexedData';
 import getLeaderboard from '@/lib/getLeaderboard';
@@ -24,9 +25,7 @@ export async function GET(req: NextRequest) {
   const dataSet = await getAllIndexedData(creator);
   const filtered = getLeaderboard(dataSet.response, USD);
   try {
-    creator = await ethPublicClient.getEnsName({
-      address: normalize(creator as string) as any,
-    });
+    creator = await getEnsName(creator as string);
   } catch (err) {
     console.error(err);
   }

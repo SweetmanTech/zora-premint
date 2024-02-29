@@ -1,14 +1,13 @@
 import { normalize } from 'viem/ens';
 import { ethPublicClient } from './publicClient';
+import getEnsName from './getEnsName';
 
 const getEnsNames = async (rawData: any[]) => {
   const updatedData = await Promise.all(
-    rawData.map(async (data) => {
+    rawData.map(async (data: any) => {
       const rawAddress = data.buyer;
       try {
-        const creatorId = await ethPublicClient.getEnsName({
-          address: normalize(rawAddress) as any,
-        });
+        const creatorId = await getEnsName(rawAddress);
         return { ...data, buyer: creatorId || data.buyer };
       } catch (error) {
         throw error;
