@@ -35,7 +35,7 @@ export const getProfileInfo = async (buyers: string[]) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `${process.env.NEXT_PUBLIC_AIRSTACK_API_KEY}`, // Add API key to Authorization header
+      Authorization: `${process.env.NEXT_PUBLIC_AIRSTACK_API_KEY}`,
     },
     body: JSON.stringify({ query, variables }),
   });
