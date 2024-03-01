@@ -7,8 +7,8 @@ const LeaderboardRow = ({ rank, name, text, image, isFrame }: any) => {
 
   return (
     <tr
-      className="bg-gray-50 font-helvetica dark:bg-gray-950"
-      tw={`${bgColor} dark:bg-gray-950 flex justify-between items-center text-2xl`}
+      className={`${bgColor} font-helvetica`}
+      tw={`${bgColor}  flex justify-between items-center text-2xl`}
     >
       <td
         className="pl-4 text-4xl font-bold text-gray-900"

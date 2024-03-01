@@ -6,18 +6,19 @@ import LeaderboardCard from './LeaderboardCard';
 import WarpcastButton from '../WarpcastButton';
 import ArtistTitle from '../ArtistTitle';
 import { useEffect, useState } from 'react';
-import getEnsName from '@/lib/getEnsName';
 import Avatar from '../Avatar';
 import Button from '../Button';
+import { getProfileInfo } from '@/lib/getProfileInfo';
 
 const LeaderboardPage = ({ creator }: any) => {
   const [humanId, setHumanId] = useState(creator);
+  const [creatorPfp, setCreatorPfp] = useState(null);
 
   useEffect(() => {
     const init = async () => {
-      const name = await getEnsName(creator);
-      console.log('SWEETS name', name);
-      setHumanId(name);
+      const data = await getProfileInfo([creator]);
+      setCreatorPfp(data.data.Domains.Domain[0].avatar);
+      setHumanId(data.data.Domains.Domain[0].name);
     };
 
     if (!creator) return;
@@ -34,7 +35,7 @@ const LeaderboardPage = ({ creator }: any) => {
           className="px-4 py-4 flex items-center gap-3"
           tw="text-5xl px-4 py-4 flex items-center gap-3"
         >
-          <Avatar size="77" />
+          <Avatar size="77" src={creatorPfp || undefined} />
         </div>
       </div>
       <div className="flex justify-end">
