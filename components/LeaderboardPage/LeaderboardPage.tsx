@@ -8,6 +8,7 @@ import ArtistTitle from '../ArtistTitle';
 import { useEffect, useState } from 'react';
 import getEnsName from '@/lib/getEnsName';
 import Avatar from '../Avatar';
+import Button from '../Button';
 
 const LeaderboardPage = ({ creator }: any) => {
   const [humanId, setHumanId] = useState(creator);
@@ -35,6 +36,11 @@ const LeaderboardPage = ({ creator }: any) => {
         >
           <Avatar size="77" />
         </div>
+      </div>
+      <div className="flex justify-end">
+        <Button className="bg-white !text-black flex gap-5">
+          Share <img src="/images/share.png" />
+        </Button>
       </div>
       <LeaderboardCard />
     </LeaderboardProvider>
