@@ -20,7 +20,7 @@ const LeaderboardHead = () => (
         className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
         tw="px-4 py-3 text-left font-medium tracking-wider"
       >
-        value spent
+        editions
       </th>
     </tr>
   </thead>
