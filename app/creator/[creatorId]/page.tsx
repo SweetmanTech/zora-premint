@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 const Page = ({ params }: { params: { creatorId: string } }) => (
-  <>
+  <div className="mx-3">
     <FrameMetadata
       buttons={getButtons()}
       image={{
@@ -27,7 +27,7 @@ const Page = ({ params }: { params: { creatorId: string } }) => (
       postUrl={`${VERCEL_URL}/api/frame`}
     />
     <LeaderboardPage creator={params.creatorId} />
-  </>
+  </div>
 );
 
 export default Page;
