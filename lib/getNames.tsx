@@ -10,7 +10,7 @@ const getNames = async (rawData: any[]) => {
     const dataWithNamesAndAvatars = getDataWithNamesAndAvatars(rawData, domains, socials);
     return getSortedLeaderboard(dataWithNamesAndAvatars);
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return [];
   }
 };

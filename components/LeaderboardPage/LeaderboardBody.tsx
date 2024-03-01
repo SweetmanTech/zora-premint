@@ -14,7 +14,7 @@ const LeaderboardBody = ({ leaderboard, isFrame = false }: any) => (
         rank={index + 1}
         name={item.profileName || item.buyer}
         image={item?.profileImage?.length > 0 ? getIpfsLink(item.profileImage) : undefined}
-        text={`$${item.totalCreatorRewardUsd}`}
+        text={item.editions}
       />
     ))}
   </tbody>

@@ -1,4 +1,4 @@
-import { encodeEventTopics, erc721Abi } from 'viem';
+import { encodeEventTopics, erc721Abi, zeroAddress } from 'viem';
 import { ethGetLogsBatch } from './ethGetLogsBatch';
 import { mapChainIdToClient, mapChainIdToEndpoint } from './utils';
 
@@ -7,7 +7,11 @@ const getTransferEvents = async (editions: any[], chainId: number) => {
   const topics = encodeEventTopics({
     abi: erc721Abi,
     eventName: 'Transfer',
+    args: {
+      from: zeroAddress,
+    },
   });
+
   const publicClient = mapChainIdToClient(chainId || 10);
   const latestBlockNumber = await publicClient.getBlockNumber();
   const latestBlock = Number(latestBlockNumber);
