@@ -10,7 +10,7 @@ export const getEditionsByCreator = async (creator: string) => {
     },
   });
   const SOUND_FACTORY = '0x0000000000aec84F5BFc2af15EAfb943bf4e3522';
-  const chains = [1, 10, 8453];
+  const chains = [10, 8453];
   const calls = [];
   for (const chainId of chains) {
     calls.push(
@@ -42,6 +42,7 @@ export const getEditionsByCreator = async (creator: string) => {
   chains.forEach((chainId, index) => {
     chainIdToContracts[chainId] = contracts[index];
   });
+  console.log('chainIdToContracts', chainIdToContracts);
   return chainIdToContracts;
 };
 const getContracts = (data: any) => {
