@@ -21,6 +21,7 @@ const getResponse = async (req: NextRequest): Promise<NextResponse> => {
     buttons,
     image: {
       src: `${VERCEL_URL}/api/leaderboard?creator=${creatorId}`,
+      aspectRatio: '1:1',
     },
     input:{
       text: 'Search a different creator',
