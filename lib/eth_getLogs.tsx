@@ -1,5 +1,3 @@
-import { getPayerFromTransaction } from './eth_getTransactionByHash';
-
 export const getLogs = async (
   contractAddress: String[],
   topics: Array<String>,

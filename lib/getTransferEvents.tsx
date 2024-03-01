@@ -1,27 +1,9 @@
-import { optimismPublicClient, basePublicClient } from './publicClient';
 import { encodeEventTopics, erc721Abi } from 'viem';
 import { ethGetLogsBatch } from './ethGetLogsBatch';
-const mapChainIdToClient = (chainId: number) => {
-  switch (chainId) {
-    case 10:
-      return optimismPublicClient;
-    case 8453:
-      return basePublicClient;
-    default:
-      throw new Error(`Unsupported chainId: ${chainId}`);
-  }
-};
-const mapChainIdToEndpoint = (chainId: number) => {
-  switch (chainId) {
-    case 10:
-      return 'https://opt-mainnet.g.alchemy.com/v2/mBeLxutFN16DEheyiUtcoKdis0Jxn68H';
-    case 8453:
-      return 'https://base-mainnet.g.alchemy.com/v2/3m9vR6Vx1Yo0NurSa-6r65hGwGWzXvEa';
-    default:
-      throw new Error(`Unsupported chainId: ${chainId}`);
-  }
-};
+import { mapChainIdToClient, mapChainIdToEndpoint } from './utils';
+
 const getTransferEvents = async (editions: any[], chainId: number) => {
+  if (editions.length === 0) return [];
   const topics = encodeEventTopics({
     abi: erc721Abi,
     eventName: 'Transfer',

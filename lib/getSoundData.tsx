@@ -1,21 +1,22 @@
-import getFormattedData from './getFormattedData';
+import { getEditionsByCreator } from './getSoundContractsByCreator';
 import getTransferEvents from './getTransferEvents';
 import parseLogEntries from './parseLogEntries';
+import getFormattedData from './getFormattedData';
 
 const getSoundData = async (creator: string, ethPrice: any) => {
-  const soundResponse = await fetch(`/api/sound/contracts?creator=${creator}`);
-  const soundData = await soundResponse.json();
-  const baseEditions = soundData.response
-    .filter((item: any) => item.chainId === 8453)
-    .map((item: any) => item.edition);
-  const optimismEditions = soundData.response
-    .filter((item: any) => item.chainId === 10)
-    .map((item: any) => item.edition);
-  const [baseRawTransactions, optimismRawTransactions] = await Promise.all([
-    getTransferEvents(baseEditions, 8453),
+  const creatorEditions = await getEditionsByCreator(creator);
+  const [mainnetEditions, baseEditions, optimismEditions] = [
+    creatorEditions[1],
+    creatorEditions[8453],
+    creatorEditions[10],
+  ];
+  const [mainnetRawTransactions, optimismRawTransactions, baseRawTransactions] = await Promise.all([
+    getTransferEvents(mainnetEditions, 1),
     getTransferEvents(optimismEditions, 10),
+    getTransferEvents(baseEditions, 8453),
   ]);
-  const editions = [...baseRawTransactions, ...optimismRawTransactions];
+  console.log('mainnetRawTransactions', mainnetRawTransactions);
+  const editions = [...mainnetRawTransactions, ...optimismRawTransactions, ...baseRawTransactions];
   const parsed = parseLogEntries(editions);
   const arrayData = getFormattedData(parsed, ethPrice);
   return arrayData;
