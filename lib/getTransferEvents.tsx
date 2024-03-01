@@ -11,7 +11,6 @@ const getTransferEvents = async (editions: any[], chainId: number) => {
       from: zeroAddress,
     },
   });
-
   const publicClient = mapChainIdToClient(chainId || 10);
   const latestBlockNumber = await publicClient.getBlockNumber();
   const latestBlock = Number(latestBlockNumber);
