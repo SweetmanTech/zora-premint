@@ -3,6 +3,7 @@ import { ethGetLogsBatch } from './ethGetLogsBatch';
 import { mapChainIdToClient, mapChainIdToEndpoint } from './utils';
 
 const getTransferEvents = async (editions: any[], chainId: number) => {
+  if (editions.length === 0) return [];
   const topics = encodeEventTopics({
     abi: erc721Abi,
     eventName: 'Transfer',
