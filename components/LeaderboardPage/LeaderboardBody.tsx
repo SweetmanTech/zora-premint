@@ -1,3 +1,4 @@
+import { getIpfsLink } from '@/lib/getIPFS';
 import LeaderboardRow from './LeaderboardRow';
 import { formatEther } from 'viem';
 
@@ -11,8 +12,8 @@ const LeaderboardBody = ({ leaderboard, isFrame = false }: any) => (
         isFrame={isFrame}
         key={item.buyer}
         rank={index + 1}
-        name={item.buyer}
-        image={item?.pfp}
+        name={item.profileName || item.buyer}
+        image={item?.profileImage?.length > 0 ? getIpfsLink(item.profileImage) : undefined}
         text={`$${item.totalCreatorRewardUsd}`}
       />
     ))}
