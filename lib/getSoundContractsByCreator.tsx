@@ -1,6 +1,7 @@
 import { encodeEventTopics, decodeEventLog } from 'viem';
 import soundCreatorsAbi from './abi/soundCreators-abi.json';
 import { mapChainIdToEndpoint } from './utils';
+import { SOUND_FACTORY } from './consts';
 export const getEditionsByCreator = async (creator: string) => {
   const topics: any = encodeEventTopics({
     abi: soundCreatorsAbi,
@@ -9,7 +10,6 @@ export const getEditionsByCreator = async (creator: string) => {
       owner: creator,
     },
   });
-  const SOUND_FACTORY = '0x0000000000aec84F5BFc2af15EAfb943bf4e3522';
   const chains = [1, 10, 8453];
   const calls = [];
   for (const chainId of chains) {
