@@ -15,6 +15,8 @@ const getSoundData = async (creator: string, ethPrice: any) => {
     getTransferEvents(optimismEditions, 10),
     getTransferEvents(baseEditions, 8453),
   ]);
+  console.log('baseRawTransactions', baseRawTransactions);
+  console.log('optimismRawTransactions', optimismRawTransactions);
   console.log('mainnetRawTransactions', mainnetRawTransactions);
   const editions = [...mainnetRawTransactions, ...optimismRawTransactions, ...baseRawTransactions];
   const parsed = parseLogEntries(editions);
