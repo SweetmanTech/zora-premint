@@ -29,7 +29,7 @@ const LeaderboardPage = ({ creator }: any) => {
     <LeaderboardProvider creator={creator}>
       <LogoutButton />
       <WarpcastButton creator={creator} />
-      <div className="flex border border-sky-500 justify-between">
+      <div className="flex justify-between">
         <ArtistTitle creator={humanId} />
         <div
           className="px-4 py-4 flex items-center gap-3"
