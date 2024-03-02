@@ -9,14 +9,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "https://twitter.com/Zizzamia",
+  "author": "https://warpcast.com/crazzywizard",
   "license": "MIT",
   "dependencies": {
     "@coinbase/onchainkit": "^0.9.5",
     "@privy-io/react-auth": "^1.57.0",
     "@vercel/og": "^0.6.2",
     "@xmtp/frames-validator": "^0.5.2",
-    "axios": "^1.6.7",
     "bufferutil": "^4.0.8",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",

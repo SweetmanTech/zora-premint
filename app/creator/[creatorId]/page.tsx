@@ -4,7 +4,7 @@ import { FrameMetadata } from '@coinbase/onchainkit';
 import getButtons from '@/lib/getButtons';
 
 const Page = ({ params }: { params: { creatorId: string } }) => (
-  <>
+  <div className="mx-3">
     <FrameMetadata
       ogTitle="data muse"
       ogDescription="data muse"
@@ -21,7 +21,7 @@ const Page = ({ params }: { params: { creatorId: string } }) => (
     <meta property="of:accepts:xmtp" content="2024-02-01" />
 
     <LeaderboardPage creator={params.creatorId} />
-  </>
+  </div>
 );
 
 export default Page;
