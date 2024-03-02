@@ -9,6 +9,7 @@ import Avatar from '../Avatar';
 import Button from '../Button';
 import { getProfileInfo } from '@/lib/getProfileInfo';
 import NavBar from '../NavBar';
+import ShareButton from '../ShareButton';
 
 const LeaderboardPage = ({ creator }: any) => {
   const [humanId, setHumanId] = useState(creator);
@@ -41,9 +42,7 @@ const LeaderboardPage = ({ creator }: any) => {
         </div>
       </div>
       <div className="flex justify-end">
-        <Button className="bg-white !text-black flex gap-5">
-          Share <img src="/images/share.png" />
-        </Button>
+        <ShareButton creator={creator} />
         <WarpcastButton creator={creator} />
       </div>
       <LeaderboardCard />
