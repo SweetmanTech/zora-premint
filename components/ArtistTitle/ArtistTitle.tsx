@@ -7,7 +7,7 @@ const ArtistTitle = ({ creator }: any) => (
     tw="text-5xl py-9 pl-7 my-3 text-black text-center rounded-lg bg-[#BCB4C5] bg-opacity-67 drop-shadow-2xl"
   >
     <p>Top collectors for </p>
-    <p className="pl-1">{` ${shortenAddress(creator)}`}:</p>
+    <p className="pl-1 md:pl-3">{shortenAddress(creator)}:</p>
   </div>
 );
 
