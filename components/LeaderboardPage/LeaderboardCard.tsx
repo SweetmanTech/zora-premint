@@ -6,7 +6,7 @@ const LeaderboardCard = () => {
   const { leaderboard } = useLeaderboardProvider() as any;
 
   return (
-    <Card className="w-full max-w-4xl">
+    <Card className="w-full">
       <CardContent className="p-0">
         <Leaderboard leaderboard={leaderboard} />
       </CardContent>
