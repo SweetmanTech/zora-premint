@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import Avatar from '../Avatar';
 import Button from '../Button';
 import { getProfileInfo } from '@/lib/getProfileInfo';
+import NavBar from '../NavBar';
 
 const LeaderboardPage = ({ creator }: any) => {
   const [humanId, setHumanId] = useState(creator);
@@ -27,6 +28,7 @@ const LeaderboardPage = ({ creator }: any) => {
 
   return (
     <LeaderboardProvider creator={creator}>
+      <NavBar />
       <LogoutButton />
       <WarpcastButton creator={creator} />
       <div className="flex justify-between">
