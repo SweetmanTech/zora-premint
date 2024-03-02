@@ -1,6 +1,5 @@
 'use client';
 
-import LogoutButton from '../LogoutButton';
 import LeaderboardProvider from '@/providers/LeaderboardProvider';
 import LeaderboardCard from './LeaderboardCard';
 import WarpcastButton from '../WarpcastButton';
@@ -9,6 +8,7 @@ import { useEffect, useState } from 'react';
 import Avatar from '../Avatar';
 import Button from '../Button';
 import { getProfileInfo } from '@/lib/getProfileInfo';
+import NavBar from '../NavBar';
 
 const LeaderboardPage = ({ creator }: any) => {
   const [humanId, setHumanId] = useState(creator);
@@ -17,8 +17,11 @@ const LeaderboardPage = ({ creator }: any) => {
   useEffect(() => {
     const init = async () => {
       const data = await getProfileInfo([creator]);
-      setCreatorPfp(data.data.Domains.Domain[0].avatar);
-      setHumanId(data.data.Domains.Domain[0].name);
+      const domain = data?.data?.Domains?.Domain?.[0];
+      if (domain) {
+        setCreatorPfp(domain.avatar);
+        setHumanId(domain.name);
+      }
     };
 
     if (!creator) return;
@@ -27,8 +30,7 @@ const LeaderboardPage = ({ creator }: any) => {
 
   return (
     <LeaderboardProvider creator={creator}>
-      <LogoutButton />
-      <WarpcastButton creator={creator} />
+      <NavBar />
       <div className="flex justify-between">
         <ArtistTitle creator={humanId} />
         <div
@@ -42,6 +44,7 @@ const LeaderboardPage = ({ creator }: any) => {
         <Button className="bg-white !text-black flex gap-5">
           Share <img src="/images/share.png" />
         </Button>
+        <WarpcastButton creator={creator} />
       </div>
       <LeaderboardCard />
     </LeaderboardProvider>
