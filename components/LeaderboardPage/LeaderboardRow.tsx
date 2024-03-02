@@ -18,13 +18,13 @@ const LeaderboardRow = ({ rank, name, text, image, isFrame }: any) => {
       </td>
       <td className="flex">
         <div
-          className="px-4 py-4 flex items-center gap-3"
+          className="py-4 flex items-center gap-3"
           tw="text-5xl px-4 py-4 flex items-center gap-3"
         >
           <Avatar size={isFrame ? '125' : '32'} src={image} />
         </div>
         <div
-          className="px-4 py-4 flex items-center gap-3"
+          className="pl-3 py-4 flex items-center gap-3"
           tw="text-5xl px-4 py-4 flex items-center gap-3"
         >
           <div tw="px-4">{shortenAddress(name)}</div>
