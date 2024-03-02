@@ -8,7 +8,7 @@ const LoginButton = () => {
   const disableLogin = !ready || (ready && authenticated);
 
   return (
-    <Button disabled={disableLogin} onClick={login}>
+    <Button disabled={disableLogin} onClick={login} className="bg-black px-11 py-3">
       Log in
     </Button>
   );
