@@ -19,8 +19,6 @@ const ShareButton = ({ creator }: any) => {
 
   return (
     <div className="font-helvetica relative">
-      {' '}
-      {/* Added relative positioning here */}
       <Button
         className="bg-white !text-black flex gap-3 w-[100px] shadow-md"
         onClick={toggleDropdown}
@@ -29,7 +27,6 @@ const ShareButton = ({ creator }: any) => {
       </Button>
       {isDropdownVisible && (
         <div className="absolute right-0 mt-2 bg-white shadow-md rounded-lg py-2 w-[300px]">
-          {/* This div is now absolutely positioned with its right edge aligned with the button's right edge */}
           <ul>
             <LinkButton
               text="Share to Warpcast"
