@@ -31,18 +31,18 @@ const ShareButton = ({ creator }: any) => {
             <LinkButton
               text="Share to Warpcast"
               src="/images/warpcast.png"
-              href={() => window.open(`https://warpcast.com/~/compose?text=${url}`)}
+              onClick={() => window.open(`https://warpcast.com/~/compose?text=${url}`)}
             />
             <LinkButton text="Share to XMTP" src="/images/xmtp.png" onClick={copyToClipboard} />
             <LinkButton
               text="Share to Image"
               src="/images/placeholder.png"
-              href={() => window.open(`${VERCEL_URL}/api/leaderboard?creator=${creator}`)}
+              onClick={() => window.open(`${VERCEL_URL}/api/leaderboard?creator=${creator}`)}
             />
             <LinkButton
               text="Share to X"
               src="/images/x-logo.png"
-              href={() =>
+              onClick={() =>
                 window.open(
                   `https://twitter.com/intent/tweet?text=Know%20your%20community%20with%20datamuse&url=${url}`,
                 )
