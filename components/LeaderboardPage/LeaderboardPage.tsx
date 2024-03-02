@@ -33,8 +33,6 @@ const LeaderboardPage = ({ creator }: any) => {
   return (
     <LeaderboardProvider creator={creator}>
       <NavBar />
-      <LogoutButton />
-      <WarpcastButton creator={creator} />
       <div className="flex justify-between">
         <ArtistTitle creator={humanId} />
         <div
@@ -48,6 +46,7 @@ const LeaderboardPage = ({ creator }: any) => {
         <Button className="bg-white !text-black flex gap-5">
           Share <img src="/images/share.png" />
         </Button>
+        <WarpcastButton creator={creator} />
       </div>
       <LeaderboardCard />
     </LeaderboardProvider>

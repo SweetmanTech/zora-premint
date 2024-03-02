@@ -1,10 +1,14 @@
-import Button from '../Button';
+import { useRouter } from 'next/navigation';
 import SearchBar from '../SearchBar';
 
 const NavBar = () => {
+  const { push } = useRouter();
+
   return (
     <div className="px-5 bg-[#BCB4C5] flex justify-between items-center">
-      <img src="/images/logo.png" />
+      <button type="button" onClick={() => push('/')}>
+        <img src="/images/logo.png" />
+      </button>
       <SearchBar />
     </div>
   );
