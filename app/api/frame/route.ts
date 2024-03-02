@@ -1,4 +1,4 @@
-import { VERCEL_URL } from '@/lib/consts';
+import { FRAME_INPUT_PLACEHOLDER, VERCEL_URL } from '@/lib/consts';
 import getButtons from '@/lib/getButtons';
 import getCreatorId from '@/lib/getCreatorId';
 import { FrameRequest, getFrameHtmlResponse } from '@coinbase/onchainkit';
@@ -24,7 +24,7 @@ const getResponse = async (req: NextRequest): Promise<NextResponse> => {
       aspectRatio: '1:1',
     },
     input:{
-      text: 'Search a different creator',
+      text: FRAME_INPUT_PLACEHOLDER,
     },
     postUrl: `${VERCEL_URL}/api/frame`,
   } as any;

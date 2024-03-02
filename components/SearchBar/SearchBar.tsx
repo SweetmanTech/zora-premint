@@ -14,7 +14,7 @@ const SearchBar = () => {
       <input
         onChange={(e) => setCreator(e.target.value)}
         className="rounded h-[30px] w-[200px] md:w-[300px] pl-3"
-        placeholder="search another wallet..."
+        placeholder="search wallet address..."
       />
       <Button onClick={handleClick} className="bg-white !text-black w-[29px] !shadow-2xl">
         <img height="20" width="20" src="/images/search.png" />
