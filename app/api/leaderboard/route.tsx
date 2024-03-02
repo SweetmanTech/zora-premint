@@ -27,8 +27,10 @@ export async function GET(req: NextRequest) {
   const queryParams = req.nextUrl.searchParams;
   let creator: any = queryParams.get('creator');
   const { USD } = await getEthPrice();
-  const zoraData = await getAllIndexedData(creator);
-  const [soundData] = await Promise.all([getSoundData(creator, USD)]);
+  const [zoraData, soundData] = await Promise.all([
+    getAllIndexedData(creator),
+    getSoundData(creator, USD),
+  ]);
   const zoraFiltered = getLeaderboard(zoraData.response, USD);
   const merged = mergeLeaderboardData(zoraFiltered, soundData);
   const sorted = getSortedLeaderboard(merged);
