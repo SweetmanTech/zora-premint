@@ -18,8 +18,12 @@ const LeaderboardPage = ({ creator }: any) => {
   useEffect(() => {
     const init = async () => {
       const data = await getProfileInfo([creator]);
-      setCreatorPfp(data.data.Domains.Domain[0].avatar);
-      setHumanId(data.data.Domains.Domain[0].name);
+      console.log('SWEETS DATA', data);
+      const domain = data.data.Domains.Domain[0];
+      if (domain) {
+        setCreatorPfp(domain.avatar);
+        setHumanId(domain.name);
+      }
     };
 
     if (!creator) return;
