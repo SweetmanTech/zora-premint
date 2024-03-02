@@ -1,4 +1,4 @@
-import { normalize } from 'path';
+import { normalize } from 'viem/ens';
 import { ethPublicClient } from './publicClient';
 
 const getEnsName = async (address: string) => {
