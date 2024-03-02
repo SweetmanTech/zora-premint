@@ -14,6 +14,7 @@ export const DEFAULT_FRAME = {
   },
   postUrl: `${VERCEL_URL}/api/frame`,
 } as FrameMetadataType;
+export const FRAME_INPUT_PLACEHOLDER = '0x... or .eth';
 
 export const SOUND_FACTORY = '0x0000000000aec84F5BFc2af15EAfb943bf4e3522';
 

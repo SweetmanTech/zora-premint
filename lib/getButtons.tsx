@@ -1,7 +1,7 @@
 const getButtons = () => {
   return [
     {
-      label: 'check address 🔄',
+      label: 'check another address 🔄',
     },
   ] as any;
 };
