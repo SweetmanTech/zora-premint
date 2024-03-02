@@ -1,6 +1,5 @@
 import { getIpfsLink } from '@/lib/getIPFS';
 import LeaderboardRow from './LeaderboardRow';
-import { formatEther } from 'viem';
 
 const LeaderboardBody = ({ leaderboard, isFrame = false }: any) => (
   <tbody
