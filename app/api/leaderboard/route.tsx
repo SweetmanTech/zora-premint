@@ -2,6 +2,7 @@ import ArtistTitle from '@/components/ArtistTitle';
 import FrameFooter from '@/components/FrameFooter';
 import Leaderboard from '@/components/Leaderboard';
 import getEthPrice from '@/lib/getEthPrice';
+import getAllIndexedData from '@/lib/getIndexedData';
 import getLeaderboard from '@/lib/getLeaderboard';
 import getNames from '@/lib/getNames';
 import getSortedLeaderboard from '@/lib/getSortedLeaderboard';
@@ -25,12 +26,8 @@ export async function GET(req: NextRequest) {
   const queryParams = req.nextUrl.searchParams;
   let creator: any = queryParams.get('creator');
   const { USD } = await getEthPrice();
-  const [zoraData, soundData] = await Promise.all([
-    getZoraData(creator),
-    getSoundData(creator, USD),
-  ]);
-  console.log('zoraData', zoraData);
-  console.log('soundData', soundData);
+  const zoraData = await getAllIndexedData(creator);
+  const [soundData] = await Promise.all([getSoundData(creator, USD)]);
   const zoraFiltered = getLeaderboard(zoraData.response, USD);
   const merged = mergeLeaderboardData(zoraFiltered, soundData);
   const sorted = getSortedLeaderboard(merged);

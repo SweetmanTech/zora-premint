@@ -1,8 +1,6 @@
-import getAllIndexedData from './getIndexedData';
-
 const getZoraData = async (creator: string) => {
-  const zoraResponse = await getAllIndexedData(creator);
-  const zoraData = zoraResponse.response;
+  const zoraResponse = await fetch(`/api/graphData?creator=${creator}`);
+  const zoraData = await zoraResponse.json();
   return zoraData;
 };
 
