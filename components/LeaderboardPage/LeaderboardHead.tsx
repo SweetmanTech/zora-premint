@@ -1,5 +1,5 @@
 const LeaderboardHead = () => (
-  <thead tw="text-2xl bg-opacity-80 mb-1 drop-shadow-2xl">
+  <thead tw="text-2xl bg-opacity-80 mb-1 drop-shadow-2xl h-[50px]">
     <tr
       className="bg-[#BCB4C5] font-helvetica font-bold text-lg rounded rounded-lg"
       tw="divide-y text-5xl divide-gray-200 dark:divide-gray-800 text-black flex justify-between w-full"

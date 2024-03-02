@@ -2,14 +2,13 @@
 
 import LeaderboardProvider from '@/providers/LeaderboardProvider';
 import LeaderboardCard from './LeaderboardCard';
-import WarpcastButton from '../WarpcastButton';
 import ArtistTitle from '../ArtistTitle';
 import { useEffect, useState } from 'react';
 import Avatar from '../Avatar';
-import Button from '../Button';
 import { getProfileInfo } from '@/lib/getProfileInfo';
-import NavBar from '../NavBar';
 import ShareButton from '../ShareButton';
+import SearchBar from '../SearchBar';
+import Profile from '../Profile';
 
 const LeaderboardPage = ({ creator }: any) => {
   const [humanId, setHumanId] = useState(creator);
@@ -31,21 +30,18 @@ const LeaderboardPage = ({ creator }: any) => {
 
   return (
     <LeaderboardProvider creator={creator}>
-      <NavBar />
-      <div className="flex justify-between">
+      <div className="px-3 flex items-center justify-between bg-[#BCB4C5] h-[50px] rounded-bl-lg rounded-br-lg mb-[8px]">
+        <Profile src={creatorPfp} />
+        <SearchBar />
+      </div>
+      <div className="mx-3">
         <ArtistTitle creator={humanId} />
-        <div
-          className="px-4 py-4 flex items-center gap-3"
-          tw="text-5xl px-4 py-4 flex items-center gap-3"
-        >
-          <Avatar size="77" src={creatorPfp || undefined} />
+
+        <div className="flex justify-end mb-[8px]">
+          <ShareButton creator={creator} />
         </div>
+        <LeaderboardCard />
       </div>
-      <div className="flex justify-end">
-        <ShareButton creator={creator} />
-        <WarpcastButton creator={creator} />
-      </div>
-      <LeaderboardCard />
     </LeaderboardProvider>
   );
 };

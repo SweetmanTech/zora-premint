@@ -4,7 +4,7 @@ import { FrameMetadata } from '@coinbase/onchainkit';
 import getButtons from '@/lib/getButtons';
 
 const Page = ({ params }: { params: { creatorId: string } }) => (
-  <div className="mx-3">
+  <div>
     <FrameMetadata
       ogTitle="data muse"
       ogDescription="data muse"
