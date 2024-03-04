@@ -1,27 +1,11 @@
-import { getFrameMetadata } from '@coinbase/onchainkit';
-import type { Metadata } from 'next';
-import LandingPage from '@/components/LandingPage';
-import { DEFAULT_FRAME, VERCEL_URL } from '@/lib/consts';
-
-const frameMetadata = { ...getFrameMetadata(DEFAULT_FRAME), 'of:accepts:xmtp': '2024-02-01' };
-
-export const metadata: Metadata = {
-  title: 'datamuse.xyz',
-  description: 'data muse',
-  openGraph: {
-    title: 'data muse',
-    description: 'data muse',
-    images: [`https://${VERCEL_URL}/api/og`],
-  },
-  other: {
-    ...frameMetadata,
-  },
-};
+import Buttons from './Buttons';
+import CreateFrameMetadata from './CreateFrameMetadata';
 
 const Page = () => (
-  <>
-    <LandingPage />
-  </>
+  <div className="flex flex-col justify-center items-center h-[100vh]">
+    <CreateFrameMetadata />
+    <Buttons />
+  </div>
 );
 
 export default Page;
