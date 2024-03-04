@@ -2,21 +2,18 @@
 
 import createForFree from '@/lib/createForFree';
 import Button from '../Button';
-import { basePublicClient } from '@/lib/publicClient';
 import useConnectedWallet from '@/hooks/useConnectedWallet';
-import { baseWalletClient } from '@/lib/walletClient';
 import { useWalletClient } from 'wagmi';
+import { WalletClient } from 'viem';
 
 const PremintButton = () => {
   const { connectedWallet } = useConnectedWallet();
   const { data: walletClient } = useWalletClient();
 
   const handleClick = async () => {
-    console.log('SWEETS PREMINT');
     const response = await createForFree({
-      publicClient: basePublicClient,
       creatorAccount: connectedWallet as any,
-      walletClient: walletClient,
+      walletClient: walletClient as WalletClient,
     });
     console.log('SWEETS PREMINT', response);
   };
