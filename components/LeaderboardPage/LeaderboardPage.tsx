@@ -4,7 +4,6 @@ import LeaderboardProvider from '@/providers/LeaderboardProvider';
 import LeaderboardCard from './LeaderboardCard';
 import ArtistTitle from '../ArtistTitle';
 import { useEffect, useState } from 'react';
-import Avatar from '../Avatar';
 import { getProfileInfo } from '@/lib/getProfileInfo';
 import ShareButton from '../ShareButton';
 import SearchBar from '../SearchBar';

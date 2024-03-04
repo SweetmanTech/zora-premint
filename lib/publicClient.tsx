@@ -1,4 +1,4 @@
-import { createPublicClient, http } from 'viem';
+import { PublicClient, createPublicClient, http } from 'viem';
 import { base, mainnet, optimism } from 'viem/chains';
 
 export const ethPublicClient = createPublicClient({
@@ -14,4 +14,4 @@ export const optimismPublicClient = createPublicClient({
 export const basePublicClient = createPublicClient({
   chain: base,
   transport: http(),
-});
+}) as PublicClient;
