@@ -1,4 +1,3 @@
-import LandingPageHeader from '@/components/LandingPage/LandingPageHeader';
 import { NextRequest } from 'next/server';
 
 export const runtime = 'edge';
@@ -36,9 +35,7 @@ export async function GET(req: NextRequest) {
           fontFamily: '"HelveticaBold"',
         }}
         tw="flex gap-3"
-      >
-        <LandingPageHeader isServer />
-      </div>
+      ></div>
     ),
     {
       width: 1200,

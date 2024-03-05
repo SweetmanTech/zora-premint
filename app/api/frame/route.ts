@@ -1,6 +1,5 @@
 import { FRAME_INPUT_PLACEHOLDER, VERCEL_URL } from '@/lib/consts';
 import getButtons from '@/lib/getButtons';
-import getCreatorId from '@/lib/getCreatorId';
 import { FrameRequest, getFrameHtmlResponse } from '@coinbase/onchainkit';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -10,8 +9,6 @@ const getResponse = async (req: NextRequest): Promise<NextResponse> => {
   try {
     const body: FrameRequest = await req.json();
     const { untrustedData } = body;
-    const {url, inputText} = untrustedData
-    creatorId = await getCreatorId(inputText, url)
     buttonIndex = untrustedData.buttonIndex;
   } catch (error) {
     console.error('Error parsing JSON from request', error);

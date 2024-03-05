@@ -2,25 +2,28 @@
 
 import createForFree from '@/lib/createForFree';
 import Button from '../Button';
-import useConnectedWallet from '@/hooks/useConnectedWallet';
-import { useWalletClient } from 'wagmi';
+import { useWalletClient, useAccount } from 'wagmi';
 import { WalletClient } from 'viem';
 
 const PremintButton = () => {
-  const { connectedWallet } = useConnectedWallet();
+  const { address } = useAccount();
   const { data: walletClient } = useWalletClient();
 
   const handleClick = async () => {
     const response = await createForFree({
-      creatorAccount: connectedWallet as any,
+      creatorAccount: address as any,
       walletClient: walletClient as WalletClient,
     });
     console.log('SWEETS PREMINT', response);
   };
 
   return (
-    <Button onClick={handleClick} className="bg-black font-helvetica p-5">
-      HELLO WORLD
+    <Button
+      onClick={handleClick}
+      className="bg-baseblue font-helvetica px-[100px] py-5 flex flex-col gap-3 rounded-2xl"
+    >
+      <p className="text-xl">Create Gas Free on Base</p>
+      <p className="text-xs">with Zora Protocol</p>
     </Button>
   );
 };
