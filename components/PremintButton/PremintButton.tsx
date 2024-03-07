@@ -4,6 +4,8 @@ import createForFree from '@/lib/createForFree';
 import Button from '../Button';
 import { useWalletClient, useAccount } from 'wagmi';
 import { WalletClient } from 'viem';
+import mint from '@/lib/mint';
+import { basePublicClient } from '@/lib/publicClient';
 
 const PremintButton = () => {
   const { address } = useAccount();

@@ -6,7 +6,7 @@ import { useWalletClient } from 'wagmi';
 
 const Buttons = () => {
   const { data: walletClient } = useWalletClient();
-  console.log('SWEETS result', walletClient);
+
   return (
     <div className="flex flex-col gap-5 justify-center items-center">
       <ConnectButton />
